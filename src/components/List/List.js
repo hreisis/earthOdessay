@@ -10,6 +10,7 @@ const List = () => {
 
     const places = [{name: 'Cool Place'},
                     {name: 'nono'},
+                    {name: 'biubiu'}
                     ];
 
     return (

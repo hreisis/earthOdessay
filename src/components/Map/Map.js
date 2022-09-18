@@ -3,7 +3,6 @@ import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import GoogleMapReact from 'google-map-react';
 import Rating from '@material-ui/lab';
 import { Paper, Typography, useMediaQuery } from '@material-ui/core';
-
 import useStyles from './styles';
 
 const Map = ( { setCoordinates, setBounds, coordinates}) => {
