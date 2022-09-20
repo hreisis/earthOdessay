@@ -18,12 +18,14 @@ const App = () => {
     }, []);
 
     useEffect(() => {
-        getPlacesData(bounds)
-            .then((data) => {
-                console.log(data);
-                setPlaces(data);
-            })
-    }, [coordinates, bounds]); //pass a second argument to useEffect that is the array of values that the effect depends on
+        if (bounds) {
+            getPlacesData(bounds.sw, bounds.ne)
+                .then((data) => {
+                    console.log(data);
+                    setPlaces(data);
+                });
+            }
+}, [coordinates, bounds]); //pass a second argument to useEffect that is the array of values that the effect depends on
 
     return (
         <>
