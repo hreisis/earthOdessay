@@ -1,7 +1,9 @@
-import { red } from '@material-ui/core/colors';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
+  backgroundColor: {
+  },
+
   title: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
