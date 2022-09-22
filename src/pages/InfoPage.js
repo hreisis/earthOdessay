@@ -5,7 +5,7 @@ import Header from '../components/Header/Header';
 import List from "../components/List/List";
 import Map from "../features/Map/Map";
 import { getPlacesData } from "../api";
-
+import SideBar from "../components/SideBar/SideBar";
 
 const InfoPage = () => {
     const [places, setPlaces] = useState([]);
@@ -31,9 +31,9 @@ const InfoPage = () => {
     return (
         <>
             <CssBaseline />
-            <Header />
-            <Grid container spacing={3} style={{ width: '100%' }}>
-                <Grid item xs={4} md={6}>
+            <SideBar />
+            <Grid container spacing={3} justifyContent='flex-end' style={{ width: '100%' }}>
+                <Grid item xs={4} md={3}>
                     <List places = {places}/>
                 </Grid>
                 <Grid item xs={8} md={6}>

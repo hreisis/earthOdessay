@@ -1,11 +1,11 @@
 import React from "react";
-
+import { Typography } from "@material-ui/core";
 
 const WallPaper = () => {
 
   var prettyearthImage = "";
   var prettyearthBaseUrl = "https://www.gstatic.com/prettyearth/assets/full/";
-  var prettyearthImgExtension = "." + "jpg";
+  var prettyearthImgExtension = ".jpg";
   var prettyearthJson =
     "https://raw.githubusercontent.com/adriancooney/prettyearth-wallpapers/master/data/imageIds.json";
 
@@ -28,7 +28,6 @@ const WallPaper = () => {
           '<img src="' + imgUrl + '" alt="' + randomId + '" style="width:100%">'
         );
       } else {
-        //document.write(imgUrl);
         return(imgUrl);
       } 
     } else {
@@ -49,14 +48,20 @@ const WallPaper = () => {
     xobj.send(null);
   };
 
+  console.log(getLink());
+
   return (
-    <div style={{ 
-        backgroundImage: `url('${getLink}')`,
-        backgroundSize: 'cover',
-        height: '100vh'}}
-        >
-        
+    <div>
+        <div style={{ 
+            backgroundImage: `url(${getLink()})`,
+            backgroundSize: 'cover',
+            height: '100vh'}}
+            >
+
+        </div>
+        <Typography gutterBottom variant="body2" align='right'>Ⓒ Google Earth Image</Typography>
     </div>
+
   );
 };
 

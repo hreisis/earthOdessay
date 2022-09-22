@@ -1,5 +1,4 @@
 import React from 'react';
-import { Autocomplete } from '@react-google-maps/api';
 import { AppBar, Toolbar, Typography, InputBase, Box } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -12,7 +11,7 @@ const Header = () => {
         <AppBar position='static'>
             <Toolbar className={classes.toolbar}>
                 <Typography variant='h5' className={classes.title}>
-                    Walk the Earth
+                    Walk the earth
                 </Typography>            
                 <Box display = 'flex'>
                     <Typography variant='h6' className={classes.title}>

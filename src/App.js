@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { CssBaseline, Grid } from "@material-ui/core";
-import Header from "./components/Header/Header";
-import List from "./components/List/List";
-import Map from "./features/Map/Map";
-import { getPlacesData } from "./api";
 import HomePage from "./pages/HomePage";
 import InfoPage from "./pages/InfoPage";
+import AboutPage from "./pages/AboutPage";
+import AccountPage from "./pages/AccountPage";
 
 const App = () => {
   return (
@@ -20,7 +17,9 @@ const App = () => {
     >
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="Info" element={<InfoPage />} />
+        <Route path="Explore" element={<InfoPage />} />
+        <Route path='About' element={<AboutPage />} />
+        <Route path='Account' element={<AccountPage />} />
       </Routes>
     </div>
   );
