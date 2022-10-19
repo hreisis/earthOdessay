@@ -1,15 +1,15 @@
-import * as React from "react";
-import {
-  Box,
-  Avatar,
-  Menu,
-  MenuItem,
-  ListItemIcon,
-  Divider,
-  IconButton,
-  Typography,
-  Tooltip
-} from "@material-ui/core";
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Avatar from '@mui/material/Avatar';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
+import Logout from '@mui/icons-material/Logout';
+import UserLoginForm from '../../features/user/UserLoginForm';
 import { NavLink } from "react-router-dom";
 
 export default function AccountMenu() {
@@ -21,28 +21,29 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   return (
     <React.Fragment>
-      <Box sx={{ alignItems: "right", textAlign: "right" }}>
-        <NavLink className="nav-link" to="/about">
-          <i className="fa fa-info fa-lg" /> About
+      <Box sx={{ display:"flex",  justifyContent:"flex-end", alignItems: "flex-end", textAlign: "right", paddingTop: "10px" }}>
+      <NavLink className="nav-link" to="/" style={{ color: "#000000", fontWeight: 'bold'}}>
+        {">>"}Home
+        </NavLink>
+        <NavLink className="nav-link" to="/about" style={{ color: "#000000", fontWeight: 'bold'}}>
+        {">>"}About
         </NavLink>
         
-        <NavLink className="nav-link" to="/explore">
-          <i className="fa fa-info fa-lg" /> Explore
+        <NavLink className="nav-link" to="/explore" style={{ color: "#000000", fontWeight: 'bold'}}>
+        {">>"}Explore
         </NavLink>
-        
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
             size="small"
-            sx={{ ml: 10 }}
-            aria-controls={open ? "account-menu" : undefined}
+            sx={{ ml: 2 }}
+            aria-controls={open ? 'account-menu' : undefined}
             aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
+            aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>My</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }}>A</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -55,39 +56,46 @@ export default function AccountMenu() {
         PaperProps={{
           elevation: 0,
           sx: {
-            overflow: "visible",
-            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+            overflow: 'visible',
+            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
             mt: 1.5,
-            "& .MuiAvatar-root": {
+            '& .MuiAvatar-root': {
               width: 32,
               height: 32,
               ml: -0.5,
               mr: 1,
             },
-            "&:before": {
+            '&:before': {
               content: '""',
-              display: "block",
-              position: "absolute",
+              display: 'block',
+              position: 'absolute',
               top: 0,
               right: 14,
               width: 10,
               height: 10,
-              bgcolor: "background.paper",
-              transform: "translateY(-50%) rotate(45deg)",
+              bgcolor: 'background.paper',
+              transform: 'translateY(-50%) rotate(45deg)',
               zIndex: 0,
             },
           },
         }}
-        transformOrigin={{ horizontal: "right", vertical: "top" }}
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
+
         <MenuItem>
-          <Avatar /> Profile
-        </MenuItem>
-        <MenuItem>
-          <Avatar /> My account
+          <Avatar />         
+          <NavLink className="nav-link" to="/Account">
+          My Itinerary
+          </NavLink>
         </MenuItem>
         <Divider />
+        <MenuItem>
+          <ListItemIcon>
+            <Logout fontSize="small" />
+          </ListItemIcon>
+          Login
+        </MenuItem>
       </Menu>
     </React.Fragment>
   );

@@ -59,7 +59,7 @@ const WallPaper = () => {
             >
 
         </div>
-        <Typography gutterBottom variant="body2" align='right'>Ⓒ Google Earth Image</Typography>
+
     </div>
 
   );

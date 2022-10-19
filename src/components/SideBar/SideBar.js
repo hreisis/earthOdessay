@@ -55,7 +55,7 @@ export default function SideBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap color="black">
-          Restaurants, Hotels & Attractions
+          Voyager
           </Typography>
         </Toolbar>
       </AppBar>
@@ -83,7 +83,7 @@ export default function SideBar() {
         </div>
         <Divider />
         <List>
-          {["Explore", "Flight", "Hotel", "Plan"].map((text, index) => (
+          {["Explore Local", "Flight", "Hotel", "Plan"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
