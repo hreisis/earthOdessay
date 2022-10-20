@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Grid from "@mui/material/Container";
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
@@ -23,6 +24,7 @@ export default function AccountMenu() {
   };
   return (
     <React.Fragment>
+          <Grid container spacing={2}>
       <Box sx={{ display:"flex",  justifyContent:"flex-end", alignItems: "flex-end", textAlign: "right", paddingTop: "10px" }}>
       <NavLink className="nav-link" to="/" style={{ color: "#000000", fontWeight: 'bold'}}>
         {">>"}Home
@@ -97,6 +99,7 @@ export default function AccountMenu() {
           Login
         </MenuItem>
       </Menu>
+      </Grid>
     </React.Fragment>
   );
 }

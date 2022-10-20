@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 const HomePage = () => {
   return (
     <Grid container spacing={2}>
-      <Menu />
 
       <Box
         sx={{
