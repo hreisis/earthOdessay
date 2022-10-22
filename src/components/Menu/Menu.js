@@ -87,7 +87,7 @@ export default function AccountMenu() {
 
         <MenuItem>
           <Avatar />         
-          <NavLink className="nav-link" to="/Account">
+          <NavLink className="nav-link" to="/Account" style={{ color: "#000000"}}>
           My Itinerary
           </NavLink>
         </MenuItem>

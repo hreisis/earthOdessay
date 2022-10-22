@@ -10,8 +10,7 @@ import Contact from "../features/user/Contact";
 const AboutPage = () => {
   return (
     <>
-     <Grid container spacing={2}>
-        
+      <Grid container spacing={2}>
         <Typography variant="h2" gutterBottom>
           The Go-To site
         </Typography>
@@ -26,7 +25,7 @@ const AboutPage = () => {
             Earth Odessay <br />
             is designed for every voyager.
           </Typography> */}
-           {/* <Typography mt="20" variant="overline" gutterBottom textAlign="right">
+      {/* <Typography mt="20" variant="overline" gutterBottom textAlign="right">
             <ul>
               <li>Here you could:</li>
               <li>{">>"}Plan your trip</li>
