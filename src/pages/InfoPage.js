@@ -31,12 +31,12 @@ const InfoPage = () => {
     return (
         <>
             <CssBaseline />
-            <SideBar />
-            <Grid container spacing={3} justifyContent='flex-end' style={{ width: '100%' }}>
-                <Grid item xs={4} md={3}>
+            {/* <SideBar /> */}
+            <Grid container spacing={3} justifyContent='center' style={{ width: '100%' }}>
+                <Grid item xs={3} md={3}>
                     <List places = {places}/>
                 </Grid>
-                <Grid item xs={8} md={6}>
+                <Grid item xs={8} md={5}>
                     <Map 
                         setCoordinates={setCoordinates}
                         setBounds={setBounds}
