@@ -15,7 +15,7 @@ const HomePage = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "flex-end",
-          textAlign: "right",
+          textAlign: "left",
           paddingBottom: 2,
         }}
       >
