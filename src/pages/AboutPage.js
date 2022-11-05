@@ -10,6 +10,7 @@ import Contact from "../features/user/Contact";
 const AboutPage = () => {
   return (
     <>
+    <Menu />
       <Grid container spacing={2}>
         <Typography variant="h2" gutterBottom>
           The Go-To site

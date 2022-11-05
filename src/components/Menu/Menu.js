@@ -1,19 +1,24 @@
-import * as React from 'react';
+import React, { useState } from "react";
+import { AppBar, Toolbar, Typography, InputBase, Box } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
+import { Autocomplete } from "@react-google-maps/api";
 import Grid from "@mui/material/Container";
-import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Tooltip from '@mui/material/Tooltip';
-import Logout from '@mui/icons-material/Logout';
-import UserLoginForm from '../../features/user/UserLoginForm';
+import Avatar from "@mui/material/Avatar";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import Logout from "@mui/icons-material/Logout";
+import UserLoginForm from "../../features/user/UserLoginForm";
 import { NavLink } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import NearMeIcon from '@mui/icons-material/NearMe';
+import useStyles from "./styles";
 
-export default function AccountMenu() {
+export default function AccountMenu({ setCoordinates }) {
+  const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -22,83 +27,147 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const [autocomplete, setAutocomplete] = useState(null);
+
+  const onLoad = (autoC) => setAutocomplete(autoC);
+
+  const onPlaceChanged = () => {
+    const lat = autocomplete.getPlace().geometry.location.lat();
+    const lng = autocomplete.getPlace().geometry.location.lng();
+
+    setCoordinates({ lat, lng });
+  };
+
   return (
     <React.Fragment>
-          <Grid container spacing={2}>
-      <Box sx={{ display:"flex",  justifyContent:"flex-end", alignItems: "flex-end", textAlign: "right", paddingTop: "10px" }}>
-      <NavLink className="nav-link" to="/" style={{ color: "#000000", fontWeight: 'bold'}}>
-        {">>"}Home
-        </NavLink>
-        <NavLink className="nav-link" to="/about" style={{ color: "#000000", fontWeight: 'bold'}}>
-        {">>"}About
-        </NavLink>
-        
-        <NavLink className="nav-link" to="/explore" style={{ color: "#000000", fontWeight: 'bold'}}>
-        {">>"}Explore
-        </NavLink>
-        <Tooltip title="Account settings">
-          <IconButton
-            onClick={handleClick}
-            size="small"
-            sx={{ ml: 2 }}
-            aria-controls={open ? 'account-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
+      <Grid container spacing={2}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "flex-end",
+            textAlign: "right",
+            paddingTop: "10px",
+          }}
+        >
+          <NavLink
+            className="nav-link"
+            to="/"
+            style={{ color: "#000000", fontWeight: "bold" }}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>A</Avatar>
-          </IconButton>
-        </Tooltip>
-      </Box>
-      <Menu
-        anchorEl={anchorEl}
-        id="account-menu"
-        open={open}
-        onClose={handleClose}
-        onClick={handleClose}
-        PaperProps={{
-          elevation: 0,
-          sx: {
-            overflow: 'visible',
-            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-            mt: 1.5,
-            '& .MuiAvatar-root': {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
-            },
-            '&:before': {
-              content: '""',
-              display: 'block',
-              position: 'absolute',
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: 'background.paper',
-              transform: 'translateY(-50%) rotate(45deg)',
-              zIndex: 0,
-            },
-          },
-        }}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-      >
-
-        <MenuItem>
-          <Avatar />         
-          <NavLink className="nav-link" to="/Account" style={{ color: "#000000"}}>
-          My Itinerary
+            {">>"}Home
           </NavLink>
-        </MenuItem>
-        <Divider />
-        <MenuItem>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Login
-        </MenuItem>
-      </Menu>
+          <NavLink
+            className="nav-link"
+            to="/about"
+            style={{ color: "#000000", fontWeight: "bold" }}
+          >
+            {">>"}About
+          </NavLink>
+
+          <NavLink
+            className="nav-link"
+            to="/explore"
+            style={{ color: "#000000", fontWeight: "bold" }}
+          >
+            {">>"}Explore
+          </NavLink>
+
+          <Tooltip title="Account settings">
+            <IconButton
+              onClick={handleClick}
+              size="small"
+              sx={{ ml: 2 }}
+              aria-controls={open ? "account-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+            >
+              <Avatar sx={{ width: 32, height: 32 }}>A</Avatar>
+            </IconButton>
+          </Tooltip>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "flex-end",
+            textAlign: "right",
+            paddingTop: "10px",
+          }}
+        >
+          {" "}
+          <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Searching a city"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+              />
+            </div>
+          </Autocomplete>
+          <IconButton aria-label="nearme" size="small">
+            <NearMeIcon /> </IconButton>
+        </Box>
+
+        <Menu
+          anchorEl={anchorEl}
+          id="account-menu"
+          open={open}
+          onClose={handleClose}
+          onClick={handleClose}
+          PaperProps={{
+            elevation: 0,
+            sx: {
+              overflow: "visible",
+              filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+              mt: 1.5,
+              "& .MuiAvatar-root": {
+                width: 32,
+                height: 32,
+                ml: -0.5,
+                mr: 1,
+              },
+              "&:before": {
+                content: '""',
+                display: "block",
+                position: "absolute",
+                top: 0,
+                right: 14,
+                width: 10,
+                height: 10,
+                bgcolor: "background.paper",
+                transform: "translateY(-50%) rotate(45deg)",
+                zIndex: 0,
+              },
+            },
+          }}
+          transformOrigin={{ horizontal: "right", vertical: "top" }}
+          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+        >
+          <MenuItem>
+            <Avatar />
+            <NavLink
+              className="nav-link"
+              to="/Account"
+              style={{ color: "#000000" }}
+            >
+              My Itinerary
+            </NavLink>
+          </MenuItem>
+          <Divider />
+          <MenuItem>
+            <ListItemIcon>
+              <Logout fontSize="small" />
+            </ListItemIcon>
+            Login
+          </MenuItem>
+        </Menu>
       </Grid>
     </React.Fragment>
   );

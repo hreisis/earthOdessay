@@ -5,7 +5,6 @@ import InfoPage from "./pages/InfoPage";
 import AboutPage from "./pages/AboutPage";
 import AccountPage from "./pages/AccountPage";
 import Footer from "./components/Footer";
-import Menu from "./components/Menu/Menu"
 
 const App = () => {
   return (
@@ -17,7 +16,6 @@ const App = () => {
     //     height: "100vh",
     //   }}
     >
-        <Menu />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="Explore" element={<InfoPage />} />
