@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import WallPaper from "../components/WallPaper/WallPaper";
-import Menu from "../components/Menu/Menu";
+import Header from "../components/Header/Header";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const HomePage = () => {
   return (
     <>
-      <Menu />
+      <Header />
       <Grid container spacing={2}>
         <Box
           sx={{

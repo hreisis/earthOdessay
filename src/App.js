@@ -5,6 +5,7 @@ import InfoPage from "./pages/InfoPage";
 import AboutPage from "./pages/AboutPage";
 import AccountPage from "./pages/AccountPage";
 import Footer from "./components/Footer";
+import ItineraryPage from "./pages/ItinerayPage";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="Explore" element={<InfoPage />} />
         <Route path='About' element={<AboutPage />} />
         <Route path='Account' element={<AccountPage />} />
+        <Route path='Itineray' element={<ItineraryPage />} />
       </Routes>
       <Footer />
     </div>

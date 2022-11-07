@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import AddLocationAlt from "@mui/icons-material/AddLocationAlt";
 import Stack from "@mui/material/Stack";
 import useStyles from "../components/Card/gradientBtn";
+import Menu from "../components/Header/Header"
 
 const AccountPage = () => {
   const classes = useStyles();
@@ -26,6 +27,7 @@ const AccountPage = () => {
 
   return (
     <>
+    <Menu />
       <Grid container spacing={2}>
         <Grid item pb={10}>
           <Typography variant="h2">My Itinerary</Typography>
