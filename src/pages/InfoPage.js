@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 import NearMeIcon from "@mui/icons-material/NearMe";
 import IconButton from "@mui/material/IconButton";
 import useStyles from "../components/Header/styles";
+import Tab from "../components/Tab";
 
 const InfoPage = () => {
   const classes = useStyles();
@@ -65,6 +66,9 @@ const InfoPage = () => {
     <>
       <Menu setCoordinates={setCoordinates} />
       <Grid container spacing={2}>
+
+
+
         <Box
           sx={{
             display: "flex",
