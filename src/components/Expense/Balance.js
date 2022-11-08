@@ -28,7 +28,7 @@ export const Balance = () => {
   const total = amounts.reduce((acc, item) => (acc += item), 0);
 
   return (
-    <Grid spacing={4} margin={4}>
+    <Grid spacing={4} mr={4}>
       <Grid item xs={6}>
         <Typography variant="h5" gutterBottom>
           Your Balance

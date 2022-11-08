@@ -9,6 +9,7 @@ import Tab from "@mui/material/Tab";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Expense from "../components/Expense/Expense";
+import SimpleMap from "../features/Map/SimpleMap"
 
 
 function TabPanel(props) {
@@ -72,18 +73,15 @@ const ItineraryPage = () => {
         </Box>
         <Box
           sx={{
-            flexGrow: 2,
+            flexGrow: 12,
             bgcolor: "background.paper",
-            display: "flex",
             height: "100%",
           }}
         >
           <Tabs
-            orientation="vertical"
             value={value}
             onChange={handleChange}
-            aria-label="Vertical tabs example"
-            sx={{ mt: 5 }}
+            sx={{ mt: 1 }}
           >
             <Tab label="Explore" {...a11yProps(0)} />
             <Tab label="Flight" {...a11yProps(1)} />
@@ -91,9 +89,11 @@ const ItineraryPage = () => {
             <Tab label="Budget" {...a11yProps(3)} />
           </Tabs>
           <TabPanel value={value} index={0}>
-            City Explore
+            <SimpleMap />
           </TabPanel>
-          <TabPanel value={value} index={1}></TabPanel>
+          <TabPanel value={value} index={1}>
+            two
+          </TabPanel>
           <TabPanel value={value} index={2}>
             Item Three
           </TabPanel>

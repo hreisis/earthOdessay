@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { CssBaseline, Grid } from "@material-ui/core";
-import List from "../components/List/List";
-import Map from "../features/Map/Map";
-import { getPlacesData } from "../api/index";
-import Menu from "../components/Header/Header";
+import List from "../../components/List/List";
+import Map from "./Map";
+import { getPlacesData } from "../../api/index";
+import Header from "../../components/Header/Header";
 import { AppBar, Toolbar, Typography, InputBase, Box } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import { Autocomplete } from "@react-google-maps/api";
 import Button from "@material-ui/core/Button";
 import NearMeIcon from "@mui/icons-material/NearMe";
 import IconButton from "@mui/material/IconButton";
-import useStyles from "../components/Header/styles";
-import Tab from "../components/Tab";
+import useStyles from "../../components/Header/styles";
+import Tab from "../../components/Tab";
 
-const InfoPage = () => {
+const SimpleMap = () => {
   const classes = useStyles();
   const [places, setPlaces] = useState([]);
   const [filteredPlaces, setFilteredPlaces] = useState([]);
@@ -64,22 +64,12 @@ const InfoPage = () => {
 
   return (
     <>
-      <Menu setCoordinates={setCoordinates} />
-      <Grid container spacing={2}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "flex-end",
-            textAlign: "right",
-            paddingTop: "10px",
-          }}
-        >
+      <Grid container spacing={2} justifyContent="Space-between">
+        <Grid item xs={4}>
           <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
             <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
+              <SearchIcon />
+              
               <InputBase
                 placeholder="Searching a city"
                 classes={{
@@ -88,19 +78,7 @@ const InfoPage = () => {
                 }}
               />
             </div>
-          </Autocomplete>
-          <IconButton aria-label="nearme" size="small" href="/explore">
-            <NearMeIcon />
-          </IconButton>
-        </Box>
-      </Grid>
-      <Grid
-        container
-        spacing={3}
-        justifyContent="center"
-        style={{ width: "100%" }}
-      >
-        <Grid item xs={12} md={3}>
+          </Autocomplete><br />
           <List
             places={filteredPlaces.length ? filteredPlaces : places}
             isLoading={isLoading}
@@ -111,7 +89,7 @@ const InfoPage = () => {
             setRating={setRating}
           />
         </Grid>
-        <Grid item xs={12} md={8}>
+        <Grid item xs={8}>
           <Map
             setCoordinates={setCoordinates}
             setBounds={setBounds}
@@ -125,4 +103,4 @@ const InfoPage = () => {
   );
 };
 
-export default InfoPage;
+export default SimpleMap;

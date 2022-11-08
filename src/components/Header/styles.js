@@ -13,7 +13,7 @@ export default makeStyles((theme) => ({
     },
   },
   search: {
-    position: 'relative',
+    position: 'absolute',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.black, 0.1),
     '&:hover': { backgroundColor: alpha(theme.palette.common.black, 0.25) },

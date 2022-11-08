@@ -8,7 +8,7 @@ export const TransactionList = () => {
   const { transactions } = useContext(GlobalContext);
 
   return (
-    <Grid spacing={4} margin={4}>
+    <Grid spacing={4} marginLeft={4}>
       <Typography variant="h5" gutterBottom>
         History
       </Typography>

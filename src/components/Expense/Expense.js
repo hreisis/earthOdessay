@@ -7,6 +7,7 @@ import { GlobalProvider } from "./GlobalState";
 import "./Expense.css";
 import Grid from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
 
 const Expense = () => {
   return (
@@ -23,9 +24,15 @@ const Expense = () => {
           }}
         >
           <Balance />
+          <Divider orientation="vertical" flexItem>
+            .
+          </Divider>
           <div className="container">
             <TransactionList />
           </div>
+          <Divider orientation="vertical" flexItem>
+            .
+          </Divider>
           <div className="container">
             <AddTransaction />
           </div>
