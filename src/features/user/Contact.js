@@ -110,7 +110,6 @@ export default function Contact(props) {
                   </Typography>
                   <Typography
                     variant="subtitle1"
-                    color="textSecondary"
                     paragraph={true}
                   >
                     Please send us a message using the form below.

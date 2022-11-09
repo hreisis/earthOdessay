@@ -1,28 +1,21 @@
-import React, { useEffect } from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
+import React, { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const PrivateRoute = () => {
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
 
-    const { currentUser } = useAuth()
-    const navigate = useNavigate()
-    console.log(!currentUser)
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/Signin", { replace: true });
+    }
+  }, []);
 
-    useEffect(() => {
-        if(!currentUser) {
-            navigate('/', {replace: true})
-        }
-    }, [])
+  return <Outlet />;
+};
 
-    return (
-        <>
-            <Outlet />
-        </>
-    )
-}
-
-export default PrivateRoute
-
+export default PrivateRoute;
 
 // import React from 'react';
 // import { Navigate, Outlet } from 'react-router-dom';

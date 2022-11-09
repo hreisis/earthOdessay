@@ -36,20 +36,20 @@ export default function Footer(props) {
     <footer className={classes.root}>
       <Container maxWidth="lg" >
         <Box py={6} display="flex" flexWrap="wrap" alignItems="center" margin="20">
-          <Typography color="textSecondary" component="p" gutterBottom={false} className={classes.copy}>
+          <Typography component="p" gutterBottom={false} className={classes.copy}>
           © 2022 Earth Odessay. All rights reserved
           </Typography>
           <Box ml="auto" className={classes.iconsBoxRoot}>
-            <IconButton color="textSecondary" aria-label="Twitter">
+            <IconButton aria-label="Twitter">
               <TwitterIcon />
             </IconButton>
-            <IconButton color="textSecondary" aria-label="Facebook">
+            <IconButton aria-label="Facebook">
               <FacebookIcon />
             </IconButton>
-            <IconButton color="textSecondary" aria-label="Instagram">
+            <IconButton aria-label="Instagram">
               <InstagramIcon />
             </IconButton>
-            <IconButton color="textSecondary" aria-label="LinkedIn">
+            <IconButton aria-label="LinkedIn">
               <LinkedInIcon />
             </IconButton>
           </Box>

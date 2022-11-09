@@ -2,8 +2,6 @@ import * as React from "react";
 import Grid from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Link } from "react-router-dom";
-import { styled } from "@mui/material/styles";
 import Header from "../components/Header/Header";
 import Tab from "@mui/material/Tab";
 import PropTypes from "prop-types";

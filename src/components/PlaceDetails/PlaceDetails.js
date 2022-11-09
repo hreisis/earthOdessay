@@ -37,19 +37,19 @@ const PlaceDetails = ({ place, selected, refProp }) => {
         {place?.awards?.map((award) => (
           <Box display="flex" justifyContent="space-between" my={1} alignItems="center">
             <img src={award.images.small} />
-            <Typography variant="subtitle2" color="textSecondary">{award.display_name}</Typography>
+            <Typography variant="subtitle2" color="secondary">{award.display_name}</Typography>
           </Box>
         ))}
         {place?.cuisine?.slice(0,3).map(({ name }) => (
           <Chip key={name} size="small" label={name} className={classes.chip} />
         ))}
         {place.address && (
-          <Typography gutterBottom variant="body2" color="textSecondary" className={classes.subtitle}>
+          <Typography gutterBottom variant="body2" color="secondary" className={classes.subtitle}>
             <LocationOnIcon />{place.address}
           </Typography>
         )}
         {place.phone && (
-          <Typography variant="body2" color="textSecondary" className={classes.spacing}>
+          <Typography variant="body2" color="secondary" className={classes.spacing}>
             <PhoneIcon /> {place.phone}
           </Typography>
         )}
