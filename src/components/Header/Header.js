@@ -4,13 +4,12 @@ import Grid from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { NavLink } from "react-router-dom";
-import { Login } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import "./header.scss";
+import { signInWithGoogle } from "../../firebase/config";
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -66,7 +65,9 @@ export default function AccountMenu() {
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
             >
-              <Avatar sx={{ width: 32, height: 32 }}>A</Avatar>
+              <Avatar sx={{ width: 32, height: 32 }}>
+                {localStorage.getItem("name")[0]}
+              </Avatar>
             </IconButton>
           </Tooltip>
         </Box>
@@ -107,23 +108,22 @@ export default function AccountMenu() {
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
           <MenuItem>
-            <Avatar />
+            <Avatar sx={{ width: 32, height: 32, ml: 2 }}>
+              {localStorage.getItem("name")[0]}
+            </Avatar>
             <NavLink
               className="nav-link"
               to="/Account"
               style={{ color: "#000000" }}
             >
-              My Itinerary
+              {localStorage.getItem("name")}
             </NavLink>
           </MenuItem>
-          <Divider />
+
           <MenuItem>
-            <ListItemIcon>
-              <Login fontSize="small" />
-            </ListItemIcon>
-            <Link to="/SignIn" style={{ color: "#000000" }}>
-              Login
-            </Link>
+            <button class="login-with-google-btn" onClick={signInWithGoogle}>
+              Sign in with Google
+            </button>
           </MenuItem>
         </Menu>
       </Grid>

@@ -1,7 +1,6 @@
 import * as firebase from "firebase/app";
-import 'firebase/auth' 
-import 'firebase/storage';
-import 'firebase/firestore'
+import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -14,11 +13,27 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 
-const auth = app.auth();
+export const auth = getAuth(app);
 
-const projectStorage = firebase.storage();
-const projectFirestore = firebase.firestore();
 
-export { projectStorage, projectFirestore, auth };
+const provider = new GoogleAuthProvider();
+
+
+export const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const name = result.user.displayName;
+        const email = result.user.email;
+        const profilePic = result.user.photoURL;
+  
+        localStorage.setItem("name", name);
+        localStorage.setItem("email", email);
+        localStorage.setItem("profilePic", profilePic);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  

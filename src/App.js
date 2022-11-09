@@ -6,8 +6,6 @@ import AboutPage from "./pages/AboutPage";
 import AccountPage from "./pages/AccountPage";
 import Footer from "./components/Footer";
 import ItineraryPage from "./pages/ItinerayPage";
-import SignIn from "./pages/SignIn"
-import SignUp from "./pages/SignUp"
 
 const App = () => {
   return (
@@ -25,10 +23,6 @@ const App = () => {
         <Route path='About' element={<AboutPage />} />
         <Route path='Account' element={<AccountPage />} />
         <Route path='Itineray' element={<ItineraryPage />} />
-        <Route path='SignIn' element={<SignIn />} />
-        <Route path='SignUp' element={<SignUp />}/>
-
-
       </Routes>
       <Footer />
     </div>
