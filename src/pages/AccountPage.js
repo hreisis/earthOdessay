@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import AddLocationAlt from "@mui/icons-material/AddLocationAlt";
 import useStyles from "../components/Card/gradientBtn";
 import Menu from "../components/Header/Header"
+import { signOutWithGoogle }from "../firebase/config"
 
 const AccountPage = () => {
   const classes = useStyles();
@@ -23,8 +24,9 @@ const AccountPage = () => {
     <>
     <Menu />
       <Grid container spacing={2}>
+      <button onClick={signOutWithGoogle}>Sign out</button>
         <Grid item pb={10}>
-          <Typography variant="h2">My Itinerary</Typography>
+          <Typography variant="h2">{localStorage.getItem("name")}  Itinerary</Typography>
         </Grid>
         <Grid item pt={15}>
           <Button
