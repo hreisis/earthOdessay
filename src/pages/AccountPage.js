@@ -1,22 +1,16 @@
 import React, { useState } from "react";
 import Grid from "@mui/material/Container";
-import { Typography } from "@mui/material";
-import Box from "@mui/material/Box";
-import Map from "../features/Map/Map";
-import BasicCard from "../features/City/CityCard";
-import AddButton from "../components/Card/AddButton";
+import { Typography } from "@mui/material"
 import CityList from "../features/City/CityList";
 import AddCityForm from "../components/Card/AddCityForm";
-import Popup from "../components/controls/Popup";
+import Popup from "../components/Controls/Popup";
 import Button from "@mui/material/Button";
 import AddLocationAlt from "@mui/icons-material/AddLocationAlt";
-import Stack from "@mui/material/Stack";
 import useStyles from "../components/Card/gradientBtn";
 import Menu from "../components/Header/Header"
 
 const AccountPage = () => {
   const classes = useStyles();
-
   const [recordForEdit, setRecordForEdit] = useState(null);
   const [openPopup, setOpenPopup] = useState(false);
 

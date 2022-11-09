@@ -3,7 +3,7 @@ import { CssBaseline, Grid } from "@material-ui/core";
 import List from "../components/List/List";
 import Map from "../features/Map/Map";
 import { getPlacesData } from "../api/index";
-import Menu from "../components/Header/Header";
+import Header from "../components/Header/Header";
 import { AppBar, Toolbar, Typography, InputBase, Box } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import { Autocomplete } from "@react-google-maps/api";
@@ -12,6 +12,7 @@ import NearMeIcon from "@mui/icons-material/NearMe";
 import IconButton from "@mui/material/IconButton";
 import useStyles from "../components/Header/styles";
 import Tab from "../components/Tab";
+import SimpleMap from "../features/Map/SimpleMap";
 
 const InfoPage = () => {
   const classes = useStyles();
@@ -40,8 +41,8 @@ const InfoPage = () => {
   }, [rating]);
 
   useEffect(() => {
+    setIsLoading(true);
     if (bounds) {
-      setIsLoading(true);
       getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
         setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
         setFilteredPlaces([]);
@@ -64,62 +65,9 @@ const InfoPage = () => {
 
   return (
     <>
-      <Menu setCoordinates={setCoordinates} />
-      <Grid container spacing={2}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "flex-end",
-            textAlign: "right",
-            paddingTop: "10px",
-          }}
-        >
-          <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Searching a city"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-              />
-            </div>
-          </Autocomplete>
-          <IconButton aria-label="nearme" size="small" href="/explore">
-            <NearMeIcon />
-          </IconButton>
-        </Box>
-      </Grid>
-      <Grid
-        container
-        spacing={3}
-        justifyContent="center"
-        style={{ width: "100%" }}
-      >
-        <Grid item xs={12} md={3}>
-          <List
-            places={filteredPlaces.length ? filteredPlaces : places}
-            isLoading={isLoading}
-            childClicked={childClicked}
-            type={type}
-            setType={setType}
-            rating={rating}
-            setRating={setRating}
-          />
-        </Grid>
-        <Grid item xs={12} md={8}>
-          <Map
-            setCoordinates={setCoordinates}
-            setBounds={setBounds}
-            coordinates={coordinates}
-            places={filteredPlaces.length ? filteredPlaces : places}
-            setChildClicked={setChildClicked}
-          />
-        </Grid>
+      <Header setCoordinates={setCoordinates} />
+      <Grid container>
+        <SimpleMap />
       </Grid>
     </>
   );

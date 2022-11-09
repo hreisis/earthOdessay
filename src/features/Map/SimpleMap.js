@@ -40,8 +40,8 @@ const SimpleMap = () => {
   }, [rating]);
 
   useEffect(() => {
+    setIsLoading(true);
     if (bounds) {
-      setIsLoading(true);
       getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
         setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
         setFilteredPlaces([]);
@@ -69,7 +69,7 @@ const SimpleMap = () => {
           <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
             <div className={classes.search}>
               <SearchIcon />
-              
+
               <InputBase
                 placeholder="Searching a city"
                 classes={{
@@ -78,7 +78,8 @@ const SimpleMap = () => {
                 }}
               />
             </div>
-          </Autocomplete><br />
+          </Autocomplete>
+          <br />
           <List
             places={filteredPlaces.length ? filteredPlaces : places}
             isLoading={isLoading}

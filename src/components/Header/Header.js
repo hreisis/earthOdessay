@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import { AppBar, Toolbar, Typography, InputBase, Box } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
-import { Autocomplete } from "@react-google-maps/api";
+import React from "react";
+import { Box } from "@material-ui/core";
 import Grid from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -10,12 +8,11 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import Logout from "@mui/icons-material/Logout";
-import UserLoginForm from "../../features/user/UserLoginForm";
 import { NavLink } from "react-router-dom";
-import useStyles from "./styles";
+import { Login } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
-export default function AccountMenu({ setCoordinates }) {
+export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -122,9 +119,11 @@ export default function AccountMenu({ setCoordinates }) {
           <Divider />
           <MenuItem>
             <ListItemIcon>
-              <Logout fontSize="small" />
+              <Login fontSize="small" />
             </ListItemIcon>
-            Login
+            <Link to="/SignIn" style={{ color: "#000000" }}>
+              Login
+            </Link>
           </MenuItem>
         </Menu>
       </Grid>

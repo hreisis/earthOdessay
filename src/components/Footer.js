@@ -35,7 +35,7 @@ export default function Footer(props) {
   return (
     <footer className={classes.root}>
       <Container maxWidth="lg" >
-        <Box py={6} display="flex" flexWrap="wrap" alignItems="center" margin="10">
+        <Box py={6} display="flex" flexWrap="wrap" alignItems="center" margin="20">
           <Typography color="textSecondary" component="p" gutterBottom={false} className={classes.copy}>
           © 2022 Earth Odessay. All rights reserved
           </Typography>

@@ -84,9 +84,8 @@ const ItineraryPage = () => {
             sx={{ mt: 1 }}
           >
             <Tab label="Explore" {...a11yProps(0)} />
-            <Tab label="Flight" {...a11yProps(1)} />
-            <Tab label="Hotel" {...a11yProps(2)} />
-            <Tab label="Budget" {...a11yProps(3)} />
+            <Tab label="Reservation" {...a11yProps(1)} />
+            <Tab label="Budget" {...a11yProps(2)} />
           </Tabs>
           <TabPanel value={value} index={0}>
             <SimpleMap />
@@ -95,11 +94,9 @@ const ItineraryPage = () => {
             two
           </TabPanel>
           <TabPanel value={value} index={2}>
-            Item Three
+           <Expense />
           </TabPanel>
-          <TabPanel value={value} index={3}>
-            <Expense />
-          </TabPanel>
+
         </Box>
       </Grid>
     </>
