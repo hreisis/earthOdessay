@@ -2,23 +2,23 @@ import * as React from "react";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Container";
 import Header from "../components/Header/Header";
-import SigninForm from "../components/form/SigninForm"
+import SignupForm from "../components/form/SignupForm"
 
-const SigninPage = () => {
+const SignupPage = () => {
   return (
     <>
     <Header />
       <Grid container spacing={2}>
         <Typography variant="h2" gutterBottom>
-          Please sign in first
+          Create your account
         </Typography>
         <Typography variant="h4" gutterBottom>
-          To view your personal itinerary
+          To manage your personal itinerary
         </Typography>
       </Grid>
-      <SigninForm />
+      <SignupForm />
     </>
   );
 };
 
-export default SigninPage;
+export default SignupPage;

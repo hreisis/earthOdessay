@@ -4,7 +4,6 @@ import Grid from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { NavLink } from "react-router-dom";
@@ -113,10 +112,10 @@ export default function AccountMenu() {
             </Avatar>
             <NavLink
               className="nav-link"
-              to="/Account"
+              to="/Signin"
               style={{ color: "#000000" }}
             >
-              {localStorage.getItem("name")}
+              Sign In Here
             </NavLink>
           </MenuItem>
 

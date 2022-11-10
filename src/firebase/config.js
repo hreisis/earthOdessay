@@ -5,6 +5,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
+  connectAuthEmulator
 } from "firebase/auth";
 
 const provider = new GoogleAuthProvider();
@@ -39,7 +40,7 @@ export const signInWithGoogle = () => {
     });
 };
 
-export const signOutWithGoogle = () => {
+export const signOutFunction = () => {
   signOut(auth)
     .then(() => {
       alert('Successfully logged out.')
@@ -48,3 +49,5 @@ export const signOutWithGoogle = () => {
       // An error happened.
     });
 };
+
+// connectAuthEmulator(auth, "http://localhost:9099")
