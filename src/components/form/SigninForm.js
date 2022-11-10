@@ -1,5 +1,4 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useCallback, useContext  } from "react";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -9,41 +8,28 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import WallPaper from "../../components/WallPaper/WallPaper";
 import logo from "../../assets/logo.png";
-import { signInWithGoogle } from "../../firebase/config";
+import { signInWithPassword, signInWithGoogle } from "../../firebase/config";
+import { useAuth } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
-  tertiaryAction: {
-    [theme.breakpoints.up("sm")]: {
-      textAlign: "right",
-    },
-  },
-  actions: {
-    [theme.breakpoints.down("sm")]: {
-      marginTop: theme.spacing(3),
-    },
-  },
-}));
+const SignIn = () => {
+    const handleSignIn = useCallback(async (event) => {
+        event.preventDefault();
+        const { email, password } = event.target.elements;
+        try {
+          await signInWithPassword(email.value, password.value);
+          console.log("YES!");
+        } catch (error) {
+          alert(error);
+        }
+      });
 
-export default function Form(props) {
-  const classes = useStyles();
+      const { currentUser } = useAuth();
+      const navigate = useNavigate();
 
-  const content = {
-    brand: { image: logo, width: 100 },
-    "02_header": "Sign in",
-    "02_primary-action": "Sign in",
-    "02_secondary-action": "Don't have an account?",
-    ...props.content,
-  };
-
-  let brand;
-
-  if (content.brand.image) {
-    brand = (
-      <img src={content.brand.image} alt="" width={content.brand.width} />
-    );
-  } else {
-    brand = content.brand.text || "";
-  }
+      if (currentUser) {
+        navigate("/Account");
+      }
 
   return (
     <section>
@@ -58,14 +44,14 @@ export default function Form(props) {
             <Box pt={8} pb={10} mr={5} ml={10}>
               <Box mb={3} textAlign="center">
                 <Link href="/" variant="h4" color="inherit" underline="none">
-                  {brand}
+                <img src={logo} alt="" width="100" />
                 </Link>
                 <Typography variant="h5" component="h2">
-                  {content["02_header"]}
+                Sign in
                 </Typography>
               </Box>
               <Box>
-                <form noValidate>
+                <form onSubmit={handleSignIn}>
                   <Grid container spacing={2}>
                     <Grid item xs={12}>
                       <TextField
@@ -97,7 +83,7 @@ export default function Form(props) {
                       fullWidth
                       variant="contained"
                     >
-                      {content["02_primary-action"]}
+                      Sign in
                     </Button>
                   </Box>
                   <Box my={2} textAlign="center">
@@ -105,12 +91,12 @@ export default function Form(props) {
                       class="login-with-google-btn"
                       onClick={signInWithGoogle}
                     >
-                      {content["02_primary-action"]} with Google here
+                      Sign in with Google here
                     </Button>
                   </Box>
                   <Box textAlign="center">
                     <Link href="/Signup" variant="body2">
-                      {content["02_secondary-action"]}
+                    Don't have an account?
                     </Link>
                   </Box>
                 </form>
@@ -122,3 +108,5 @@ export default function Form(props) {
     </section>
   );
 }
+
+export default SignIn;

@@ -1,12 +1,15 @@
-import firebase from "firebase/compat/app";
+import * as firebase from "firebase/app";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
-  connectAuthEmulator
+  connectAuthEmulator,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
 } from "firebase/auth";
+
 
 const provider = new GoogleAuthProvider();
 // Your web app's Firebase configuration
@@ -43,11 +46,42 @@ export const signInWithGoogle = () => {
 export const signOutFunction = () => {
   signOut(auth)
     .then(() => {
-      alert('Successfully logged out.')
+      console.log('Successfully logged out.')
     })
     .catch((error) => {
       // An error happened.
     });
 };
+
+export const signUpWithPassword = (email, password) => {
+    createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    const email = user.email;
+    // ...
+    localStorage.setItem("name", email);
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+}
+
+export const signInWithPassword = (email, password) => {
+    signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    const email = user.email;
+    // ...
+    localStorage.setItem("name", email);
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+}
 
 // connectAuthEmulator(auth, "http://localhost:9099")

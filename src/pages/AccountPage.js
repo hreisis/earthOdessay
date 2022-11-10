@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import Grid from "@mui/material/Container";
-import { Typography } from "@mui/material"
+import { Typography } from "@mui/material";
 import CityList from "../features/City/CityList";
 import AddCityForm from "../components/Card/AddCityForm";
 import Popup from "../components/Controls/Popup";
 import Button from "@mui/material/Button";
 import AddLocationAlt from "@mui/icons-material/AddLocationAlt";
 import useStyles from "../components/Card/gradientBtn";
-import Menu from "../components/Header/Header"
-import { signOutFunction }from "../firebase/config"
+import Menu from "../components/Header/Header";
+import { signOutFunction } from "../firebase/config";
 
 const AccountPage = () => {
   const classes = useStyles();
@@ -22,11 +22,15 @@ const AccountPage = () => {
 
   return (
     <>
-    <Menu />
+      <Menu />
       <Grid container spacing={2}>
-      <button onClick={signOutFunction}>Sign out</button>
+        <a href="/">
+          <button onClick={signOutFunction}>Sign out</button>
+        </a>
         <Grid item pb={10}>
-          <Typography variant="h2">{localStorage.getItem("name")}  Itinerary</Typography>
+          <Typography variant="h2">
+            {localStorage.getItem("name")} Itinerary
+          </Typography>
         </Grid>
         <Grid item pt={15}>
           <Button

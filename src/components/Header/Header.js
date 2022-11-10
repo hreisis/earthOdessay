@@ -55,6 +55,14 @@ export default function AccountMenu() {
             {">>"}Explore
           </NavLink>
 
+          <NavLink
+            className="nav-link"
+            to="/Account"
+            style={{ color: "#000000", fontWeight: "bold" }}
+          >
+            {">>"}Itinerary
+          </NavLink>
+
           <Tooltip title="Account settings">
             <IconButton
               onClick={handleClick}
