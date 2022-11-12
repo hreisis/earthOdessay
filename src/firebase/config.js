@@ -9,8 +9,8 @@ import {
   signInWithEmailAndPassword
 } from "firebase/auth";
 import { getStorage } from "firebase/storage";
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import {serverTimestamp} from 'firebase/firestore';
+import { getDatabase } from "firebase/database";
 
 const provider = new GoogleAuthProvider();
 // Your web app's Firebase configuration
@@ -29,8 +29,8 @@ export const app = initializeApp(firebaseConfig);
 
 export const projectStorage = getStorage(app);
 
-export const db = getFirestore(app);
-export const colRef = collection(db, 'users');
+//export const db = getFirestore(app);
+export const db = getDatabase(app);
 
 export const timestamp = serverTimestamp();
 

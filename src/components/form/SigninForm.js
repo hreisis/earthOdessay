@@ -1,4 +1,4 @@
-import React, { useCallback, useContext  } from "react";
+import React, { useCallback, useContext } from "react";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -11,25 +11,31 @@ import logo from "../../assets/logo.png";
 import { signInWithPassword, signInWithGoogle } from "../../firebase/config";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { db } from "../../firebase/config";
+import { ref, set } from "firebase/database";
+import { uid } from "uid";
 
 const SignIn = () => {
-    const handleSignIn = useCallback(async (event) => {
-        event.preventDefault();
-        const { email, password } = event.target.elements;
-        try {
-          await signInWithPassword(email.value, password.value);
-          console.log("YES!");
-        } catch (error) {
-          alert(error);
-        }
-      });
+  const handleSignIn = useCallback(async (event) => {
+    event.preventDefault();
+    const { email, password } = event.target.elements;
+    try {
+      await signInWithPassword(email.value, password.value);
+      console.log("YES!");
+    } catch (error) {
+      alert(error);
+    }
+  });
 
-      const { currentUser } = useAuth();
-      const navigate = useNavigate();
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
 
-      if (currentUser) {
-        navigate("/Account");
-      }
+  if (currentUser) {
+    navigate("/Account");
+    const uuid = uid();
+    //set(ref(db, `/${localStorage.getItem("name")}`), {uuid});
+    console.log({currentUser}.email);
+  };
 
   return (
     <section>
@@ -44,10 +50,10 @@ const SignIn = () => {
             <Box pt={8} pb={10} mr={5} ml={10}>
               <Box mb={3} textAlign="center">
                 <Link href="/" variant="h4" color="inherit" underline="none">
-                <img src={logo} alt="" width="100" />
+                  <img src={logo} alt="" width="100" />
                 </Link>
                 <Typography variant="h5" component="h2">
-                Sign in
+                  Sign in
                 </Typography>
               </Box>
               <Box>
@@ -78,11 +84,7 @@ const SignIn = () => {
                     </Grid>
                   </Grid>
                   <Box my={2}>
-                    <Button
-                      type="submit"
-                      fullWidth
-                      variant="contained"
-                    >
+                    <Button type="submit" fullWidth variant="contained">
                       Sign in
                     </Button>
                   </Box>
@@ -96,7 +98,7 @@ const SignIn = () => {
                   </Box>
                   <Box textAlign="center">
                     <Link href="/Signup" variant="body2">
-                    Don't have an account?
+                      Don't have an account?
                     </Link>
                   </Box>
                 </form>
@@ -107,6 +109,6 @@ const SignIn = () => {
       </Container>
     </section>
   );
-}
+};
 
 export default SignIn;
