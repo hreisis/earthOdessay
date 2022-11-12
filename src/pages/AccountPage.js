@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Grid from "@mui/material/Container";
 import { Typography } from "@mui/material";
 import CityList from "../features/City/CityList";
-import AddCityForm from "../components/Card/AddCityForm";
+import AddCityForm from "../components/form/AddCityForm";
 import Popup from "../components/Controls/Popup";
 import Button from "@mui/material/Button";
 import AddLocationAlt from "@mui/icons-material/AddLocationAlt";
-import useStyles from "../components/Card/gradientBtn";
+import useStyles from "../components/Button/gradientBtn";
 import Menu from "../components/Header/Header";
 import { signOutFunction } from "../firebase/config";
 

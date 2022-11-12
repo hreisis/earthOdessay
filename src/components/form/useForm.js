@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core";
 
 export function useForm(initialFValues) {
 
-
+    
     const [values, setValues] = useState(initialFValues);
     const [errors, setErrors] = useState({});
 
@@ -13,6 +13,7 @@ export function useForm(initialFValues) {
             ...values,
             [name]: value
         })
+        console.log(e.target.value)
     }
 
     const resetForm = () => {

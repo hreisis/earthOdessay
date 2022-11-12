@@ -34,7 +34,7 @@ const CityCard = ({ city }) => {
 
   return (
     //Link to={`${name}`} 
-    <Link to={'/Itineray'} style={{textDecoration: 'none'}}borderRadius='50'>
+    <Link to={'/Itinerary'} style={{textDecoration: 'none'}}borderRadius='50'>
       <Card sx={{ maxWidth: 400 }} >
         <CardHeader title={name} subheader={description} />
         <CardMedia component="img" height="600" image={image} alt={name} />

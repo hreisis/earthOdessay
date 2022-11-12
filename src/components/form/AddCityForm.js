@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import Controls from "../Controls/Controls";
-import { useForm, Form } from "../form/UseForm";
+import { useForm, Form } from "./UseForm";
+import ProgressBar from "../ProgressBar";
 
 const initialFValues = {
   id: 0,
@@ -14,6 +15,9 @@ const initialFValues = {
 
 export default function CityForm(props) {
   const { addOrEdit, recordForEdit } = props;
+  const [error, setError] = useState(null);
+  const [file, setFile] = useState(null);
+  const types = ["image/png", "image/jpeg"];
 
   const { values, setValues, handleInputChange, resetForm } = useForm(
     initialFValues,
@@ -22,6 +26,18 @@ export default function CityForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  };
+
+  const handleChange = (e) => {
+    let selected = e.target.files[0];
+
+    if (selected && types.includes(selected.type)) {
+      setFile(selected);
+      setError("");
+    } else {
+      setFile(null);
+      setError("Please select an image file (png or jpg)");
+    }
   };
 
   useEffect(() => {
@@ -48,10 +64,11 @@ export default function CityForm(props) {
             onChange={handleInputChange}
           />
           <Controls.Input
-            label="Picture Link"
-            name="picture link"
-            value={values.pictureLink}
-            onChange={handleInputChange}
+            type="file"
+            //label="Picture Upload"
+            name="picture upload"
+            value={values.picture}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={6}>
@@ -70,6 +87,11 @@ export default function CityForm(props) {
           <div>
             <Controls.Button type="submit" text="Submit" />
             <Controls.Button text="Reset" color="default" onClick={resetForm} />
+          </div>{" "}
+          <div className="output">
+            {error && <div className="error">{error}</div>}
+            {file && <div>{file.name}</div>}
+            {file && <ProgressBar file={file} setFile={setFile} />}
           </div>
         </Grid>
       </Grid>
