@@ -35,7 +35,7 @@ const useStorage = (file) => {
         // });
         // console.log("Document written with ID: ", docRef.id);
         setUrl(url);
-        console.log("Async function");
+        // console.log(db);
       }
     );
   }, [file]);

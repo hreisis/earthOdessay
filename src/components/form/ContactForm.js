@@ -5,23 +5,47 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
+import { ref, set } from "firebase/database";
+import { db } from "../../firebase/config";
 
 const ContactForm = () => {
-  const handleSubmit = (values, { resetForm }) => {
-    console.log("form values:", values);
-    console.log("in JSON format:", JSON.stringify(values));
-    resetForm();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { firstName, lastName, email, message } = e.target.elements;
+    saveMesasge(
+      firstName.value,
+      lastName.value,
+      email.value,
+      message.value
+    );    
+console.log(db);
+
+    e.target.reset();
+    //console.log("in JSON format:", JSON.stringify(values));
+    //resetForm();
   };
 
+  function saveMesasge(firstName, lastName, email, message) {
+    set(ref(db, "messages/" + lastName), {
+      name: firstName + lastName,
+      email: email,
+      message: message,
+    });
+
+  }
+
+
   return (
-    <form 
-    initialValues={{
-        firstName: '',
-        lastName: '',
-        email: '',
+    <form
+      initialValues={{
+        firstName: "",
+        lastName: "",
+        email: "",
         agree: false,
-    }}
-    onSubmit={handleSubmit} validate={validateContactForm}>
+      }}
+      onSubmit={handleSubmit}
+      validate={validateContactForm}
+    >
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <TextField
@@ -30,7 +54,6 @@ const ContactForm = () => {
             fullWidth
             autoComplete="fname"
             name="firstName"
-            id="firstName"
             label="First name"
             size="small"
           />
@@ -74,14 +97,16 @@ const ContactForm = () => {
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
-            control={<Checkbox name="terms" value="1" color="primary" />}
+            control={
+              <Checkbox required name="terms" value="1" color="primary" />
+            }
             label="I agree to the terms of use and privacy policy."
           />
         </Grid>
       </Grid>
       <Box mt={2}>
         <Button type="submit" fullWidth variant="contained" color="dark">
-        Submit
+          Submit
         </Button>
       </Box>
     </form>

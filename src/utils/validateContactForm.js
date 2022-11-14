@@ -1,19 +1,19 @@
-export const validateContactForm = (values) => {
+export const validateContactForm = (firstName, lastName, email, message ) => {
     const errors = {};
 
-    if (!values.firstName) {
+    if (!firstName.value) {
         errors.firstName = 'Required';
-    } else if (values.firstName.length < 2) {
+    } else if (firstName.value.length < 2) {
         errors.firstName = 'Must be at least 2 characters.';
-    } else if (values.firstName.length > 15) {
+    } else if (firstName.value.length > 15) {
         errors.firstName = 'Must be 15 characters or less';
     }
 
-    if (!values.lastName) {
+    if (!lastName.value) {
         errors.lastName = 'Required';
-    } else if (values.lastName.length < 2) {
+    } else if (lastName.value.length < 2) {
         errors.lastName = 'Must be at least 2 characters.';
-    } else if (values.lastName.length > 15) {
+    } else if (lastName.value.length > 15) {
         errors.lastName = 'Must be 15 characters or less';
     }
 
@@ -22,7 +22,7 @@ export const validateContactForm = (values) => {
     //     errors.phoneNum = 'The phone number should contain only numbers.';
     // }
 
-    if (!values.email.includes('@')) {
+    if (!email.value.includes('@')) {
         errors.email = 'Email should contain a @';
     }
 
