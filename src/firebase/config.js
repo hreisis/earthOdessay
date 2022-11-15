@@ -10,7 +10,7 @@ import {
 } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import {serverTimestamp} from 'firebase/firestore';
-import { getDatabase } from "firebase/database";
+import { getDatabase, ref, set } from "firebase/database";
 
 const provider = new GoogleAuthProvider();
 // Your web app's Firebase configuration

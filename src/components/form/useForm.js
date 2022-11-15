@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { makeStyles } from "@material-ui/core";
 
-export function useForm(initialFValues) {
+export function useForm(initialValues, validateOnChange = false, validate) {
 
     
-    const [values, setValues] = useState(initialFValues);
+    const [values, setValues] = useState(initialValues);
     const [errors, setErrors] = useState({});
 
     const handleInputChange = e => {
@@ -13,11 +13,13 @@ export function useForm(initialFValues) {
             ...values,
             [name]: value
         })
+        if (validateOnChange)
+        validate({ [name]: value })
         console.log(e.target.value)
     }
 
     const resetForm = () => {
-        setValues(initialFValues);
+        setValues(initialValues);
         setErrors({})
     }
 

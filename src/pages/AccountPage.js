@@ -9,6 +9,7 @@ import AddLocationAlt from "@mui/icons-material/AddLocationAlt";
 import useStyles from "../components/Button/gradientBtn";
 import Menu from "../components/Header/Header";
 import { signOutFunction } from "../firebase/config";
+import Box from "@mui/material/Box";
 
 const AccountPage = () => {
   const classes = useStyles();
@@ -24,14 +25,29 @@ const AccountPage = () => {
     <>
       <Menu />
       <Grid container spacing={2}>
-        <a href="/">
-          <button onClick={signOutFunction}>Sign out</button>
-        </a>
-        <Grid item pb={10}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+
+            paddingBottom: 2,
+            //border:"1px solid grey"
+          }}
+        >
           <Typography variant="h2">
-            {localStorage.getItem("name")} Itinerary
+            {localStorage.getItem("name")}'s Itinerary
           </Typography>
-        </Grid>
+          <a href="/">
+            <Button
+              className={classes.root}
+              variant="contained"
+              onClick={signOutFunction}
+            >
+              Sign out
+            </Button>
+          </a>
+        </Box>
         <Grid item pt={15}>
           <Button
             className={classes.root}

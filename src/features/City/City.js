@@ -4,13 +4,13 @@ import borabora from '../../app/assets/img/borabora.jpg'
 export const CITIES = [
     {
         id:0,
-        name: 'Alaska',
+        name: 'Alaska Example',
         image: alaska,
         description: 'Graduation trip with college friends'
     },
     {
         id:1,
-        name: 'Borabora',
+        name: 'Borabora Example',
         image: borabora,
         description: 'Honeymoon vacation plan'
     }

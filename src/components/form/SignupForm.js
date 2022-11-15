@@ -11,6 +11,10 @@ import Checkbox from "@material-ui/core/Checkbox";
 import WallPaper from "../../components/WallPaper/WallPaper";
 import logo from "../../assets/logo.png";
 import { signUpWithPassword } from "../../firebase/config";
+import { db } from "../../firebase/config";
+import { ref, set } from "firebase/database";
+import { useAuth } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const handleSignUp = useCallback(async (event) => {
@@ -18,12 +22,22 @@ const SignUp = () => {
     const { name, email, password } = event.target.elements;
     try {
       await signUpWithPassword(name.value, email.value, password.value);
-      console.log("YES!");
+      console.log(name.value, email.value);
+      saveUser(name.value, email.value);
+      navigate("/Account");
     } catch (error) {
       alert(error);
     }
   });
 
+  const navigate = useNavigate();
+
+  function saveUser(name, email) {
+    set(ref(db, "user/" + name), {
+      name: name,
+      email: email,
+    });
+  }
   return (
     <section>
       <Container>
@@ -46,7 +60,7 @@ const SignUp = () => {
               <Box>
                 <form onSubmit={handleSignUp}>
                   <Grid container spacing={2}>
-                  <Grid item xs={12}>
+                    <Grid item xs={12}>
                       <TextField
                         variant="outlined"
                         required

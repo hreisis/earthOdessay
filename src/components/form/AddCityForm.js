@@ -3,8 +3,10 @@ import { Grid } from "@material-ui/core";
 import Controls from "../Controls/Controls";
 import { useForm, Form } from "./UseForm";
 import ProgressBar from "../ProgressBar";
+import { ref, set } from "firebase/database";
+import { db } from "../../firebase/config";
 
-const initialFValues = {
+const initialValues = {
   id: 0,
   city: "",
   description: "",
@@ -19,14 +21,36 @@ export default function CityForm(props) {
   const [file, setFile] = useState(null);
   const types = ["image/png", "image/jpeg"];
 
-  const { values, setValues, handleInputChange, resetForm } = useForm(
-    initialFValues,
-    true
-  );
+  const validate = (fieldValues = values) => {
+    let temp = { ...errors };
+    if ("city" in fieldValues)
+      temp.city =
+        fieldValues.city.length > 2 ? "" : "Minimum 3 characters required.";
+    setErrors({
+      ...temp,
+    });
+
+    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
+  };
+
+  const { values, errors, setErrors, setValues, handleInputChange, resetForm } =
+    useForm(initialValues, true, validate);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // if (validate()) {
+    //   addOrEdit(values, resetForm);
+    // }
+    let ci = values.city; let de = values.description;
+    saveCity(ci, de);    console.log("ok");
   };
+
+  function saveCity(city, description) {
+    set(ref(db, "city/" + city), {
+      name: city,
+      description: description,
+    });
+  }
 
   const handleChange = (e) => {
     let selected = e.target.files[0];
@@ -55,6 +79,7 @@ export default function CityForm(props) {
             label="City"
             name="city"
             value={values.city}
+            error={errors.city}
             onChange={handleInputChange}
           />
           <Controls.Input
@@ -75,8 +100,8 @@ export default function CityForm(props) {
           <Controls.DatePicker
             name="Departure"
             label="departure"
-            value={values.departure}
             onChange={handleInputChange}
+            value={values.departure}
           />
           <Controls.DatePicker
             name="Coming Back"

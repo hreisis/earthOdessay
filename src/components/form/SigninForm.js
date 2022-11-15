@@ -11,9 +11,6 @@ import logo from "../../assets/logo.png";
 import { signInWithPassword, signInWithGoogle } from "../../firebase/config";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { db } from "../../firebase/config";
-import { ref, set } from "firebase/database";
-import { uid } from "uid";
 
 const SignIn = () => {
   const handleSignIn = useCallback(async (event) => {
@@ -21,7 +18,7 @@ const SignIn = () => {
     const { email, password } = event.target.elements;
     try {
       await signInWithPassword(email.value, password.value);
-      console.log("YES!");
+      console.log(email.value);
     } catch (error) {
       alert(error);
     }
@@ -32,10 +29,9 @@ const SignIn = () => {
 
   if (currentUser) {
     navigate("/Account");
-    const uuid = uid();
-    //set(ref(db, `/${localStorage.getItem("name")}`), {uuid});
-    console.log({currentUser}.email);
   };
+
+
 
   return (
     <section>
