@@ -32,7 +32,8 @@ export default function CityForm(props) {
       ...temp,
     });
 
-    if (fieldValues === values) return Object.values(temp).every((x) => x === "");
+    if (fieldValues === values)
+      return Object.values(temp).every((x) => x === "");
   };
 
   const { values, errors, setErrors, setValues, handleInputChange, resetForm } =
@@ -41,22 +42,26 @@ export default function CityForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(auth.currentUser.uid);
-    console.log(useStorage.file.url);
-    let ci = values.city; let de = values.description;
+    //console.log(useStorage.file.url);
+    let ci = values.city;
+    let de = values.description;
     saveCity(ci, de);
     if (validate()) {
       addOrEdit(values, resetForm);
-  };}
+    }
+  };
 
   const saveCity = (city, description) => {
     const uidd = uid();
-    set(ref(db, `/userData/${auth.currentUser.uid}/${city}`), {
-      city: city,
+    const cityDb = ref(db, `/userData/${auth.currentUser.uid}/${city}`);
+    set(cityDb, {
+      id: uidd,
+      name: city,
+      // image: undefined,
       description: description,
-      // picture: url,
-      uidd: uidd
-    })
-  }
+    });
+    //console.log(cityDb);
+  };
 
   const handleChange = (e) => {
     let selected = e.target.files[0];
