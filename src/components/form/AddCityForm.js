@@ -7,6 +7,7 @@ import { ref, set, remove } from "firebase/database";
 import { db, auth } from "../../firebase/config";
 import { uid } from "uid";
 import useStorage from "../../hooks/useStorage";
+import { collection, getDocs } from "firebase/firestore";
 
 const initialValues = {
   id: 0,
@@ -20,7 +21,6 @@ const initialValues = {
 export default function CityForm(props) {
   const { addOrEdit, recordForEdit } = props;
   const [error, setError] = useState(null);
-  const [openPopup, setOpenPopup] = useState(false);
   const [file, setFile] = useState(null);
   const types = ["image/png", "image/jpeg"];
 
@@ -43,7 +43,7 @@ export default function CityForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(auth.currentUser.uid);
-    //console.log(useStorage.file.url);
+    // console.log({url});
     let ci = values.city;
     let de = values.description;
     saveCity(ci, de);
@@ -52,25 +52,21 @@ export default function CityForm(props) {
     }
   };
 
-//Write
+  //Write
   const saveCity = (city, description) => {
     const uidd = uid();
     const cityDb = ref(db, `/userData/${auth.currentUser.uid}/${uidd}`);
     if (city.length > 2) {
-          set(cityDb, {
-      id: uidd,
-      name: city,
-      // image: undefined,
-      description: description,
-    });
+      set(cityDb, {
+        id: uidd,
+        name: city,
+        description: description,
+      });
     }
-
-    //console.log(cityDb);
   };
 
   const handleChange = (e) => {
     let selected = e.target.files[0];
-
     if (selected && types.includes(selected.type)) {
       setFile(selected);
       setError("");
@@ -126,7 +122,7 @@ export default function CityForm(props) {
             onChange={handleInputChange}
           />
           <div>
-            <Controls.Button type="submit" text="Submit" onClick={saveCity}/>
+            <Controls.Button type="submit" text="Submit" onClick={saveCity} />
             <Controls.Button text="Reset" color="#3399ff" onClick={resetForm} />
           </div>
           <div className="output">

@@ -9,7 +9,7 @@ import {
   signInWithEmailAndPassword
 } from "firebase/auth";
 import { getStorage } from "firebase/storage";
-import {serverTimestamp} from 'firebase/firestore';
+import {serverTimestamp, getFirestore} from 'firebase/firestore';
 import { getDatabase, ref, set } from "firebase/database";
 
 const provider = new GoogleAuthProvider();
@@ -28,8 +28,8 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 
 export const projectStorage = getStorage(app);
+export const projectFirestore = getFirestore(app);
 
-//export const db = getFirestore(app);
 export const db = getDatabase(app);
 
 export const timestamp = serverTimestamp();

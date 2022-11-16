@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { projectStorage} from "../firebase/config";
+import { projectStorage, projectFirestore } from "../firebase/config";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
 
@@ -10,10 +10,8 @@ const useStorage = (file) => {
 
   useEffect(() => {
     // create reference
-    // console.log(projectStorage);
-    const storageRef = ref(projectStorage, file.name);
-    // console.log(storageRef);
 
+    const storageRef = ref(projectStorage, file.name);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
@@ -26,16 +24,16 @@ const useStorage = (file) => {
       (err) => {
         setError(err);
       },
-      async() => {
+      async () => {
         const url = await getDownloadURL(uploadTask.snapshot.ref);
-        // const docRef = await addDoc(collection(db, "users"), {
-        //   first: "Ada",
-        //   last: "Lovelace",
-        //   born: 1815
-        // });
-        // console.log("Document written with ID: ", docRef.id);
+        console.log(projectFirestore);
+        const imageRef = await addDoc(collection(projectFirestore, "images"), {
+          image: file.name,
+          url: url,
+        });
+        console.log(url);
+        console.log("Document written with ID: ", imageRef.id);
         setUrl(url);
-        //console.log(url);
       }
     );
   }, [file]);
