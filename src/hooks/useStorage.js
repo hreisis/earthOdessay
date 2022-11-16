@@ -10,9 +10,9 @@ const useStorage = (file) => {
 
   useEffect(() => {
     // create reference
-    console.log(projectStorage);
+    // console.log(projectStorage);
     const storageRef = ref(projectStorage, file.name);
-    console.log(storageRef);
+    // console.log(storageRef);
 
     const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -35,7 +35,7 @@ const useStorage = (file) => {
         // });
         // console.log("Document written with ID: ", docRef.id);
         setUrl(url);
-        // console.log(db);
+        //console.log(url);
       }
     );
   }, [file]);

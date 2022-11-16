@@ -4,7 +4,9 @@ import Controls from "../Controls/Controls";
 import { useForm, Form } from "./UseForm";
 import ProgressBar from "../ProgressBar";
 import { ref, set } from "firebase/database";
-import { db } from "../../firebase/config";
+import { db, auth } from "../../firebase/config";
+import { uid } from "uid";
+import useStorage from "../../hooks/useStorage";
 
 const initialValues = {
   id: 0,
@@ -38,18 +40,22 @@ export default function CityForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (validate()) {
-    //   addOrEdit(values, resetForm);
-    // }
+    console.log(auth.currentUser.uid);
+    console.log(useStorage.file.url);
     let ci = values.city; let de = values.description;
-    saveCity(ci, de);    console.log("ok");
-  };
+    saveCity(ci, de);
+    if (validate()) {
+      addOrEdit(values, resetForm);
+  };}
 
-  function saveCity(city, description) {
-    set(ref(db, "city/" + city), {
-      name: city,
+  const saveCity = (city, description) => {
+    const uidd = uid();
+    set(ref(db, `/userData/${auth.currentUser.uid}/${city}`), {
+      city: city,
       description: description,
-    });
+      // picture: url,
+      uidd: uidd
+    })
   }
 
   const handleChange = (e) => {
@@ -110,7 +116,7 @@ export default function CityForm(props) {
             onChange={handleInputChange}
           />
           <div>
-            <Controls.Button type="submit" text="Submit" />
+            <Controls.Button type="submit" text="Submit" onClick={saveCity} />
             <Controls.Button text="Reset" color="default" onClick={resetForm} />
           </div>{" "}
           <div className="output">

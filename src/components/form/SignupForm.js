@@ -32,8 +32,8 @@ const SignUp = () => {
 
   const navigate = useNavigate();
 
-  function saveUser(name, email) {
-    set(ref(db, "user/" + name), {
+  function saveUser(uid, name, email) {
+    set(ref(db, "user/" + uid), {
       name: name,
       email: email,
     });
