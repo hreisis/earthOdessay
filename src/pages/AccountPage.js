@@ -6,6 +6,7 @@ import AddCityForm from "../components/form/AddCityForm";
 import Popup from "../components/Controls/Popup";
 import Button from "@mui/material/Button";
 import AddLocationAlt from "@mui/icons-material/AddLocationAlt";
+import LogoutIcon from '@mui/icons-material/Logout';
 import useStyles from "../components/Button/gradientBtn";
 import Menu from "../components/Header/Header";
 import { signOutFunction } from "../firebase/config";
@@ -20,6 +21,12 @@ const AccountPage = () => {
     setRecordForEdit(item);
     setOpenPopup(true);
   };
+
+  const addOrEdit = (resetForm) => {
+    resetForm();
+    setRecordForEdit(null);
+    setOpenPopup(false);
+  }
 
   return (
     <>
@@ -42,6 +49,7 @@ const AccountPage = () => {
             <Button
               className={classes.root}
               variant="contained"
+              endIcon={<LogoutIcon />}
               onClick={signOutFunction}
             >
               Sign out
@@ -72,7 +80,7 @@ const AccountPage = () => {
       >
         <AddCityForm
           recordForEdit={recordForEdit}
-          //addOrEdit={addOrEdit}
+          addOrEdit={addOrEdit}
         />
       </Popup>
     </>

@@ -9,7 +9,7 @@ export default makeStyles(({ shadows }) => ({
       /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       "linear-gradient(to right, #3399ff, #33cccc)",
     "&:hover": {
-      transform: "scale(1.02)",
+      transform: "scale(1.03)",
     },
     fontSize: 15,
     fontWeight: 500,

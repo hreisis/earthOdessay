@@ -3,7 +3,7 @@ import { Grid } from "@material-ui/core";
 import Controls from "../Controls/Controls";
 import { useForm, Form } from "./UseForm";
 import ProgressBar from "../ProgressBar";
-import { ref, set } from "firebase/database";
+import { ref, set, remove } from "firebase/database";
 import { db, auth } from "../../firebase/config";
 import { uid } from "uid";
 import useStorage from "../../hooks/useStorage";
@@ -20,6 +20,7 @@ const initialValues = {
 export default function CityForm(props) {
   const { addOrEdit, recordForEdit } = props;
   const [error, setError] = useState(null);
+  const [openPopup, setOpenPopup] = useState(false);
   const [file, setFile] = useState(null);
   const types = ["image/png", "image/jpeg"];
 
@@ -51,15 +52,19 @@ export default function CityForm(props) {
     }
   };
 
+//Write
   const saveCity = (city, description) => {
     const uidd = uid();
-    const cityDb = ref(db, `/userData/${auth.currentUser.uid}/${city}`);
-    set(cityDb, {
+    const cityDb = ref(db, `/userData/${auth.currentUser.uid}/${uidd}`);
+    if (city.length > 2) {
+          set(cityDb, {
       id: uidd,
       name: city,
       // image: undefined,
       description: description,
     });
+    }
+
     //console.log(cityDb);
   };
 
@@ -121,9 +126,9 @@ export default function CityForm(props) {
             onChange={handleInputChange}
           />
           <div>
-            <Controls.Button type="submit" text="Submit" onClick={saveCity} />
-            <Controls.Button text="Reset" color="default" onClick={resetForm} />
-          </div>{" "}
+            <Controls.Button type="submit" text="Submit" onClick={saveCity}/>
+            <Controls.Button text="Reset" color="#3399ff" onClick={resetForm} />
+          </div>
           <div className="output">
             {error && <div className="error">{error}</div>}
             {file && <div>{file.name}</div>}
