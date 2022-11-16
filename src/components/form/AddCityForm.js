@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import Controls from "../Controls/Controls";
 import { useForm, Form } from "./UseForm";
-import ProgressBar from "../ProgressBar";
 import { ref, set, remove } from "firebase/database";
 import { db, auth } from "../../firebase/config";
 import { uid } from "uid";
@@ -13,7 +12,7 @@ const initialValues = {
   id: 0,
   city: "",
   description: "",
-  pictureLink: "",
+  picture: "",
   departure: new Date(),
   comingBack: new Date(),
 };
@@ -22,13 +21,21 @@ export default function CityForm(props) {
   const { addOrEdit, recordForEdit } = props;
   const [error, setError] = useState(null);
   const [file, setFile] = useState(null);
+  const [url, setUrl] = useState(null);
   const types = ["image/png", "image/jpeg"];
 
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
     if ("city" in fieldValues)
       temp.city =
-        fieldValues.city.length > 2 ? "" : "Minimum 3 characters required.";
+        fieldValues.city.length > 1 ? "" : "Minimum 2 characters required.";
+    if ("description" in fieldValues)
+      temp.description =
+        fieldValues.description.length > 5 ? "" : "Just write something here.";
+    if ("picture" in fieldValues)
+      temp.picture = /\.(jpeg|jpg|png)$/.test(fieldValues.picture)
+        ? ""
+        : "Try something ended with .jpeg .jpg .png.";
     setErrors({
       ...temp,
     });
@@ -42,18 +49,20 @@ export default function CityForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     console.log(auth.currentUser.uid);
     // console.log({url});
     let ci = values.city;
     let de = values.description;
-    saveCity(ci, de);
+    let pi = values.picture;
+    saveCity(ci, de, pi);
     if (validate()) {
       addOrEdit(values, resetForm);
     }
   };
 
   //Write
-  const saveCity = (city, description) => {
+  const saveCity = (city, description, picture) => {
     const uidd = uid();
     const cityDb = ref(db, `/userData/${auth.currentUser.uid}/${uidd}`);
     if (city.length > 2) {
@@ -61,6 +70,7 @@ export default function CityForm(props) {
         id: uidd,
         name: city,
         description: description,
+        image: picture,
       });
     }
   };
@@ -69,11 +79,15 @@ export default function CityForm(props) {
     let selected = e.target.files[0];
     if (selected && types.includes(selected.type)) {
       setFile(selected);
+      console.log(selected.name);
       setError("");
     } else {
       setFile(null);
       setError("Please select an image file (png or jpg)");
     }
+    const { url } = useStorage;
+    setUrl(url);
+    console.log(url);
   };
 
   useEffect(() => {
@@ -101,11 +115,11 @@ export default function CityForm(props) {
             onChange={handleInputChange}
           />
           <Controls.Input
-            type="file"
-            //label="Picture Upload"
-            name="picture upload"
+            label="Picture Url"
+            name="picture"
             value={values.picture}
-            onChange={handleChange}
+            onChange={handleInputChange}
+            error={errors.picture}
           />
         </Grid>
         <Grid item xs={6}>
@@ -128,7 +142,6 @@ export default function CityForm(props) {
           <div className="output">
             {error && <div className="error">{error}</div>}
             {file && <div>{file.name}</div>}
-            {file && <ProgressBar file={file} setFile={setFile} />}
           </div>
         </Grid>
       </Grid>

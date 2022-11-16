@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Expense from "../components/Expense/Expense";
 import SimpleMap from "../features/Map/SimpleMap"
-
+import AddAlbum from "../components/Album/AddAlbum"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -84,6 +84,7 @@ const ItineraryPage = () => {
             <Tab label="Explore" {...a11yProps(0)} />
             <Tab label="Reservation" {...a11yProps(1)} />
             <Tab label="Budget" {...a11yProps(2)} />
+            <Tab label="Album" {...a11yProps(3)} />
           </Tabs>
           <TabPanel value={value} index={0}>
             <SimpleMap />
@@ -94,7 +95,9 @@ const ItineraryPage = () => {
           <TabPanel value={value} index={2}>
            <Expense />
           </TabPanel>
-
+          <TabPanel value={value} index={3}>
+            {/* <AddAlbum /> */}
+          </TabPanel>
         </Box>
       </Grid>
     </>
