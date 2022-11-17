@@ -9,9 +9,9 @@ function App() {
   return (
     <div className="App">
 
-      <UploadForm />
-      <ImageGrid />
-      {/* { selectedImg && (
+      {/* <UploadForm /> */}
+      <ImageGrid />{/* 
+      { selectedImg && (
         <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
       )} */}
     </div>

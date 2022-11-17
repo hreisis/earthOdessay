@@ -7,8 +7,9 @@ import Tab from "@mui/material/Tab";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Expense from "../components/Expense/Expense";
-import SimpleMap from "../features/Map/SimpleMap"
-import AddAlbum from "../components/Album/AddAlbum"
+import SimpleMap from "../features/Map/SimpleMap";
+import ImageGallery from "../components/Album/ImageGallery";
+import bg from "../assets/map.png";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -51,8 +52,9 @@ const ItineraryPage = () => {
   };
 
   return (
-    <>
+<>
       <Header />
+
       <Grid container spacing={2}>
         <Box
           sx={{
@@ -68,39 +70,43 @@ const ItineraryPage = () => {
           <Typography variant="overline" gutterBottom>
             Track your trvel details here
           </Typography>
-        </Box>
-        <Box
+        </Box>{" "}
+        <Grid
           sx={{
-            flexGrow: 12,
-            bgcolor: "background.paper",
-            height: "100%",
+            //backgroundImage: `url(${bg})`,
+            height: "80vh",
+            backgroundPosition: "center",              background: 'rgba(236, 233, 217, 0.8)', 
           }}
         >
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            sx={{ mt: 1 }}
+          <Box
+            sx={{
+              flexGrow: 12,
+
+              height: "100%",
+            }}
           >
-            <Tab label="Explore" {...a11yProps(0)} />
-            <Tab label="Reservation" {...a11yProps(1)} />
-            <Tab label="Budget" {...a11yProps(2)} />
-            <Tab label="Album" {...a11yProps(3)} />
-          </Tabs>
-          <TabPanel value={value} index={0}>
-            <SimpleMap />
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            two
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-           <Expense />
-          </TabPanel>
-          <TabPanel value={value} index={3}>
-            {/* <AddAlbum /> */}
-          </TabPanel>
-        </Box>
+            <Tabs value={value} onChange={handleChange} sx={{ mt: 1 }}>
+              <Tab label="Explore" {...a11yProps(0)} />
+              <Tab label="Reservation" {...a11yProps(1)} />
+              <Tab label="Budget" {...a11yProps(2)} />
+              <Tab label="Album" {...a11yProps(3)} />
+            </Tabs>
+            <TabPanel value={value} index={0}>
+              <SimpleMap />
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+              two
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+              <Expense />
+            </TabPanel>
+            <TabPanel value={value} index={3}>
+              <ImageGallery />
+            </TabPanel>
+          </Box>
+        </Grid>
       </Grid>
-    </>
+      </>
   );
 };
 

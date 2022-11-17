@@ -7,11 +7,12 @@ const useStorage = (file) => {
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState(null);
   const [url, setUrl] = useState(null);
+  const [urls, setUrls] = useState([]);
 
   useEffect(() => {
     // create reference
 
-    const storageRef = ref(projectStorage, file.name);
+    const storageRef = ref(projectStorage, "images/");
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
@@ -28,12 +29,12 @@ const useStorage = (file) => {
         const url = await getDownloadURL(uploadTask.snapshot.ref);
         console.log(projectFirestore);
         const imageRef = await addDoc(collection(projectFirestore, "images"), {
-          image: file.name,
           url: url,
         });
         console.log(url);
-        console.log("Document written with ID: ", imageRef.id);
         setUrl(url);
+        setUrls((prev) => [...prev, url]);
+        console.log(setUrls);
       }
     );
   }, [file]);

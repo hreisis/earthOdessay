@@ -1,3 +1,13 @@
+:root{
+  --primary: #E3FBF9;
+  --next: #efb6b2;
+  --secondary: #3399ff;
+  --error: #ff4a4a;
+}
+
+body{
+  background-color: #F5F4ED;
+}
 .container {
     margin: 30px auto;
     width: 350px;
@@ -75,7 +85,7 @@ input[type='number'] {
   font-size: 16px;
   margin: 10px 0 30px;
   padding: 10px;
-  width: 100%;
+  width: 200px;
 }
 
 .btn:focus,
@@ -128,8 +138,40 @@ input[type='number'] {
   opacity: 1;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .container {
-    width: 600px;
+    width: 900px;
   }
+}
+
+.progress-bar{
+  height: 5px;
+  background: var(--secondary);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.progressInput{
+  height: 0;
+  width: 0;
+  opacity: 0;
+}
+
+.progress{
+  display: block;
+  width: 40vw;
+  height: 43px;
+  border: 1px solid var(--secondary);
+  background-color: var(--secondary);
+  border-radius: 5px;
+  margin: 10px auto;
+  line-height: 30px;
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 11px;
+}
+
+label:hover{
+  background: var(--primary);
+  color: white;
 }
