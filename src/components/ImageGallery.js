@@ -9,13 +9,13 @@ import {
   listAll,
   list,
 } from "firebase/storage";
-import { projectStorage } from "../../firebase/config";
+import { projectStorage } from "../firebase/config";
 import { v4 } from "uuid";
-import ProgressBar from "./ProgressBar";
 
 function ImageGallery() {
   const [file, setFile] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);
+  const [progress, setProgress] = useState(0);
 
   const imagesListRef = ref(projectStorage, "images/");
   const uploadFile = () => {
@@ -24,6 +24,7 @@ function ImageGallery() {
     uploadBytes(imageRef, file).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
         setImageUrls((prev) => [...prev, url]);
+        setProgress((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
       });
     });
   };
@@ -56,13 +57,13 @@ function ImageGallery() {
               setFile(event.target.files[0]);
             }}
           />
-          <span>  Select +</span>
+          <span> Select +</span>
         </label>
         <button className="progress" onClick={uploadFile}>
           Upload
         </button>
       </Box>
-        {file && <ProgressBar file={file} setFile={setFile} />}
+
       <Box sx={{ height: "62vh", overflowY: "scroll" }}>
         <ImageList variant="masonry" cols={3} gap={8}>
           {imageUrls.map((url) => (

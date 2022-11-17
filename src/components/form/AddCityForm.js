@@ -5,7 +5,7 @@ import { useForm, Form } from "./UseForm";
 import { ref, set, remove } from "firebase/database";
 import { db, auth } from "../../firebase/config";
 import { uid } from "uid";
-import useStorage from "../../hooks/useStorage";
+import useStorage from "../../firebase/useStorage";
 import { collection, getDocs } from "firebase/firestore";
 
 const initialValues = {

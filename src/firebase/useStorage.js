@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { projectStorage, projectFirestore } from "../firebase/config";
+import { projectStorage, projectFirestore } from "./config";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
 
@@ -34,7 +34,7 @@ const useStorage = (file) => {
         console.log(url);
         setUrl(url);
         setUrls((prev) => [...prev, url]);
-        console.log(setUrls);
+        //console.log(setUrls);
       }
     );
   }, [file]);

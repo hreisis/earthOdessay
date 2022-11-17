@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Expense from "../components/Expense/Expense";
 import SimpleMap from "../features/Map/SimpleMap";
-import ImageGallery from "../components/Album/ImageGallery";
+import ImageGallery from "../components/ImageGallery";
 import bg from "../assets/map.png";
 
 function TabPanel(props) {
