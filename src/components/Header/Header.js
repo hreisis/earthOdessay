@@ -9,6 +9,8 @@ import Tooltip from "@mui/material/Tooltip";
 import { NavLink } from "react-router-dom";
 import "./header.scss";
 import { signInWithGoogle } from "../../firebase/config";
+import logo from "../../assets/logo.png";
+import Link from "@material-ui/core/Link";
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -26,57 +28,64 @@ export default function AccountMenu() {
         <Box
           sx={{
             display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "flex-end",
-            textAlign: "right",
+            justifyContent: "space-between",
             paddingTop: "10px",
           }}
         >
-          <NavLink
-            className="nav-link"
-            to="/"
-            style={{ color: "#000000", fontWeight: "bold" }}
+          {" "}
+          <Link href="/" variant="h4" color="inherit" underline="none">
+            <img src={logo} alt="" width="70" />
+          </Link>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "flex-end",
+              textAlign: "right"
+            }}
           >
-            {">>"}Home
-          </NavLink>
-          <NavLink
-            className="nav-link"
-            to="/about"
-            style={{ color: "#000000", fontWeight: "bold" }}
-          >
-            {">>"}About
-          </NavLink>
-
-          <NavLink
-            className="nav-link"
-            to="/explore"
-            style={{ color: "#000000", fontWeight: "bold" }}
-          >
-            {">>"}Explore
-          </NavLink>
-
-          <NavLink
-            className="nav-link"
-            to="/Account"
-            style={{ color: "#000000", fontWeight: "bold" }}
-          >
-            {">>"}Itinerary
-          </NavLink>
-
-          <Tooltip title="Account settings">
-            <IconButton
-              onClick={handleClick}
-              size="small"
-              sx={{ ml: 2 }}
-              aria-controls={open ? "account-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
+            <NavLink
+              className="nav-link"
+              to="/"
+              style={{ color: "#000000", fontWeight: "bold" }}
             >
-              <Avatar sx={{ width: 32, height: 32 }}>
-                {localStorage.getItem("name")[0]}
-              </Avatar>
-            </IconButton>
-          </Tooltip>
+              {">>"}Home
+            </NavLink>
+            <NavLink
+              className="nav-link"
+              to="/about"
+              style={{ color: "#000000", fontWeight: "bold" }}
+            >
+              {">>"}About
+            </NavLink>
+            <NavLink
+              className="nav-link"
+              to="/explore"
+              style={{ color: "#000000", fontWeight: "bold" }}
+            >
+              {">>"}Explore
+            </NavLink>
+            <NavLink
+              className="nav-link"
+              to="/Account"
+              style={{ color: "#000000", fontWeight: "bold" }}
+            >
+              {">>"}Itinerary
+            </NavLink>
+            <Tooltip title="Account settings">
+              <IconButton
+                onClick={handleClick}
+                size="small"
+                sx={{ ml: 2 }}
+                aria-controls={open ? "account-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+              >
+                <Avatar sx={{ width: 32, height: 32 }}>
+                  {localStorage.getItem("name")[0]}
+                </Avatar>
+              </IconButton>
+            </Tooltip>
+          </Box>
         </Box>
 
         <Menu

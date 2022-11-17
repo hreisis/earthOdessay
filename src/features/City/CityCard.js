@@ -13,7 +13,7 @@ import Controls from "../../components/Controls/Controls";
 import CloseIcon from "@material-ui/icons/Close";
 import { ref, remove } from "firebase/database";
 import { db, auth } from "../../firebase/config";
-
+import Tooltip from "@mui/material/Tooltip";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -46,16 +46,21 @@ const CityCard = ({ city }) => {
     <Card sx={{ maxWidth: 400 }}>
       <Link
         to={"/Itinerary"}
-        style={{ color:"black" ,textDecoration: "none" }}
+        style={{ color: "black", textDecoration: "none" }}
         borderRadius="50"
       >
         <CardHeader title={name} subheader={description} />{" "}
       </Link>
-      <Controls.ActionButton color="secondary" onClick={() => deleteCity(city.id)}>
-        <CloseIcon />
-      </Controls.ActionButton>
+
       <CardMedia component="img" height="600" image={image} alt={name} />
       <CardActions disableSpacing>
+        {" "}
+        <Controls.ActionButton
+          color="secondary"
+          onClick={() => deleteCity(city.id)}
+        >
+          <CloseIcon />
+        </Controls.ActionButton>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
