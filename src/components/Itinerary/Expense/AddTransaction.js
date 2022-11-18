@@ -3,7 +3,7 @@ import { GlobalContext } from "./GlobalState";
 import Typography from "@mui/material/Typography";
 import { ref, set } from "firebase/database";
 import { uid } from "uid";
-import { db } from "../../firebase/config";
+import { db } from "../../../firebase/config";
 
 export const AddTransaction = () => {
   const [text, setText] = useState("");

@@ -13,7 +13,6 @@ import Controls from "../../components/Controls/Controls";
 import CloseIcon from "@material-ui/icons/Close";
 import { ref, remove } from "firebase/database";
 import { db, auth } from "../../firebase/config";
-import Tooltip from "@mui/material/Tooltip";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -41,11 +40,9 @@ const CityCard = ({ city }) => {
   };
 
   return (
-    //Link to={`${name}`}
-
     <Card sx={{ maxWidth: 400 }}>
       <Link
-        to={"/Itinerary"}
+        to={`/Itinerary/${city.id}`}
         style={{ color: "black", textDecoration: "none" }}
         borderRadius="50"
       >

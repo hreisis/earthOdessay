@@ -6,9 +6,10 @@ import Header from "../components/Header/Header";
 import Tab from "@mui/material/Tab";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
-import Expense from "../components/Expense/Expense";
+import Expense from "../components/Itinerary/Expense/Expense";
 import SimpleMap from "../features/Map/SimpleMap";
-import ImageGallery from "../components/ImageGallery";
+import ImageGallery from "../components/Itinerary/ImageGallery";
+import Reservation from '../components/Itinerary/Reservation';
 import bg from "../assets/map.png";
 
 function TabPanel(props) {
@@ -86,16 +87,16 @@ const ItineraryPage = () => {
             }}
           >
             <Tabs value={value} onChange={handleChange} sx={{ mt: 1 }}>
-              <Tab label="Explore" {...a11yProps(0)} />
-              <Tab label="Reservation" {...a11yProps(1)} />
+              <Tab label="Reservation" {...a11yProps(0)} />
+              <Tab label="Explore" {...a11yProps(1)} />
               <Tab label="Budget" {...a11yProps(2)} />
               <Tab label="Album" {...a11yProps(3)} />
             </Tabs>
             <TabPanel value={value} index={0}>
-              <SimpleMap />
+              <Reservation />
             </TabPanel>
             <TabPanel value={value} index={1}>
-              two
+              <SimpleMap />
             </TabPanel>
             <TabPanel value={value} index={2}>
               <Expense />

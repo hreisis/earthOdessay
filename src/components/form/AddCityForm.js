@@ -5,8 +5,6 @@ import { useForm, Form } from "./UseForm";
 import { ref, set, remove } from "firebase/database";
 import { db, auth } from "../../firebase/config";
 import { uid } from "uid";
-import useStorage from "../../firebase/useStorage";
-import { collection, getDocs } from "firebase/firestore";
 
 const initialValues = {
   id: 0,
@@ -21,8 +19,6 @@ export default function CityForm(props) {
   const { addOrEdit, recordForEdit } = props;
   const [error, setError] = useState(null);
   const [file, setFile] = useState(null);
-  const [url, setUrl] = useState(null);
-  const types = ["image/png", "image/jpeg"];
 
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
@@ -73,21 +69,6 @@ export default function CityForm(props) {
         image: picture,
       });
     }
-  };
-
-  const handleChange = (e) => {
-    let selected = e.target.files[0];
-    if (selected && types.includes(selected.type)) {
-      setFile(selected);
-      console.log(selected.name);
-      setError("");
-    } else {
-      setFile(null);
-      setError("Please select an image file (png or jpg)");
-    }
-    const { url } = useStorage;
-    setUrl(url);
-    console.log(url);
   };
 
   useEffect(() => {

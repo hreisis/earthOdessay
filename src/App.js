@@ -32,7 +32,7 @@ const App = () => {
             <Route path="Account" element={<AccountPage />} />
           </Route>
           <Route element={<PrivateRoute />}>
-            <Route path="Itinerary" element={<ItineraryPage />} />
+            <Route path="Itinerary/*" element={<ItineraryPage />} />
           </Route>
         </Routes>
       </AuthProvider>

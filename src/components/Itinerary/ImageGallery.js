@@ -9,7 +9,7 @@ import {
   listAll,
   list,
 } from "firebase/storage";
-import { projectStorage } from "../firebase/config";
+import { projectStorage } from "../../firebase/config";
 import { v4 } from "uuid";
 
 function ImageGallery() {

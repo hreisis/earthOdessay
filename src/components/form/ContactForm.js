@@ -12,13 +12,8 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { firstName, lastName, email, message } = e.target.elements;
-    saveMesasge(
-      firstName.value,
-      lastName.value,
-      email.value,
-      message.value
-    );    
-console.log(db);
+    saveMesasge(firstName.value, lastName.value, email.value, message.value);
+    console.log(db);
 
     e.target.reset();
     //console.log("in JSON format:", JSON.stringify(values));
@@ -31,9 +26,7 @@ console.log(db);
       email: email,
       message: message,
     });
-
   }
-
 
   return (
     <form

@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
-import { db } from "../../firebase/config";
+import { db } from "../../../firebase/config";
 import { ref, onValue } from "firebase/database";
 
 // Initial state

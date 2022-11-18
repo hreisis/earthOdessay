@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { alpha } from "@material-ui/core/styles/colorManipulator";
 
 export default makeStyles(({ shadows }) => ({
   root: {
@@ -18,6 +19,12 @@ export default makeStyles(({ shadows }) => ({
     "&:active": {
       boxShadow: shadows[0],
     },
+  },
+  contactWrapper: {
+    backgroundColor: alpha("#fff", 0.5),
+  },
+  iconWrapper: {
+    backgroundColor: alpha("#bbb", 0.5),
   },
 }));
 

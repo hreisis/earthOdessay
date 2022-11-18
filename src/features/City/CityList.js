@@ -1,6 +1,5 @@
 import { Grid } from "@mui/material";
 import CityCard from "./CityCard";
-import { selectAllCities } from "./citySlice";
 import { db, auth } from "../../firebase/config";
 import { ref, onValue } from "firebase/database";
 import React, { useEffect, useState } from "react";
