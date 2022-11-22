@@ -101,9 +101,14 @@ export default function Reservation() {
               </div>
               <div className={classes.contactWrapper}>
                 <Box textAlign="center" py={4}>
-                  <Typography variant="h6" gutterBottom={true}>
-                    `${}`
-                  </Typography>{" "}
+                  <ul className="list">
+                    {reservations.map((reservation) => (
+                                          <Typography variant="h6" gutterBottom={true}>
+                      `${}`
+                    </Typography>
+                    ))}
+
+                  </ul>
                   <br />
                 </Box>
               </div>

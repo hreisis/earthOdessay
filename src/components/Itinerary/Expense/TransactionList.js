@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Transaction } from "./Transaction";
-import { GlobalContext } from "./GlobalState";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
 import { db, auth } from "../../../firebase/config";

@@ -1,4 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { db, auth } from "../../../firebase/config";
+import { ref, onValue, remove } from "firebase/database";
 import { GlobalContext } from "./GlobalState";
 
 //Money formatter function
@@ -17,8 +19,32 @@ import { GlobalContext } from "./GlobalState";
 //   );
 // }
 
+//read
 export const Transaction = ({ transaction }) => {
-  const { deleteTransaction } = useContext(GlobalContext);
+  const [transactions, setTransactions] = useState([]);
+  const city = new URLSearchParams(window.location.search).get("city");
+  useEffect(() => {
+    onValue(
+      ref(db, `/userData/${auth.currentUser.uid}/${city}/budget`),
+      (snapshot) => {
+        setTransactions([]);
+        const data = snapshot.val();
+
+        if (data !== null) {
+          Object.values(data).map((transaction) => {
+            setTransactions((oldArray) => [...oldArray, transaction]);
+          });
+          console.log(data);
+        }
+        console.log(transactions);
+      }
+    );
+  }, []);
+
+  const deleteTransaction = (uid) => {
+    console.log(transaction.id);
+    remove(ref(db, `/userData/${auth.currentUser.uid}/${city}/budget/${uid}`));
+  };
 
   const sign = transaction.amount > 0 ? "+" : "-";
 
