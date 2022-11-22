@@ -9,18 +9,24 @@ import {
   listAll,
   list,
 } from "firebase/storage";
-import { projectStorage } from "../../firebase/config";
+import { projectStorage, auth } from "../../firebase/config";
 import { v4 } from "uuid";
 
 function ImageGallery() {
   const [file, setFile] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);
   const [progress, setProgress] = useState(0);
+  
+  const city = new URLSearchParams(window.location.search).get("city");
+  const imagesListRef = ref(projectStorage, `${auth.currentUser.uid}/${city}`);
 
-  const imagesListRef = ref(projectStorage, "images/");
   const uploadFile = () => {
     if (file == null) return;
-    const imageRef = ref(projectStorage, `images/${file.name + v4()}`);
+
+    const imageRef = ref(
+      projectStorage,
+      `${auth.currentUser.uid}/${city}/${file.name + v4()}`
+    );
     uploadBytes(imageRef, file).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
         setImageUrls((prev) => [...prev, url]);
