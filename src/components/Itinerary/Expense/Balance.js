@@ -1,31 +1,30 @@
 import { Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import React, { useContext } from "react";
-import { GlobalContext } from "./GlobalState";
-
-//Money formatter function
-function moneyFormatter(num) {
-  let p = num.toFixed(2).split(".");
-  return (
-    "$ " +
-    (p[0].split("")[0] === "-" ? "-" : "") +
-    p[0]
-      .split("")
-      .reverse()
-      .reduce(function (acc, num, i, orig) {
-        return num === "+" ? acc : num + (i && !(i % 3) ? "," : "") + acc;
-      }, "") +
-    "." +
-    p[1]
-  );
-}
+import React, { useContext, useEffect, useState  } from "react";
+import { db, auth } from "../../../firebase/config";
+import { ref, onValue } from "firebase/database";
 
 export const Balance = () => {
-  const { transactions } = useContext(GlobalContext);
+  const [transactions, setTransactions] = useState([]);
 
-  const amounts = transactions.map((transaction) => transaction.amount);
+  useEffect(() => {
+    const city = new URLSearchParams(window.location.search).get("city");
+    onValue(ref(db, `/userData/${auth.currentUser.uid}/${city}/budget`), (snapshot) => {
+      setTransactions([]); 
+      const data = snapshot.val();
+
+      if (data !== null) {
+        Object.values(data).map((transaction) => {
+          setTransactions((oldArray) => [...oldArray, transaction]);      
+        });
+      }
+    });
+  }, []);
+
+  const amounts = transactions.map((transaction) => parseInt(transaction.amount));
 
   const total = amounts.reduce((acc, item) => (acc += item), 0);
+
 
   return (
     <Grid spacing={4} mr={4}>
@@ -36,7 +35,7 @@ export const Balance = () => {
       </Grid>
       <Grid item xs={6}>
         <Typography variant="h3" >
-          {moneyFormatter(total)}
+          ${total}
         </Typography>
       </Grid>
     </Grid>

@@ -3,7 +3,7 @@ import { GlobalContext } from "./GlobalState";
 import Typography from "@mui/material/Typography";
 import { ref, set } from "firebase/database";
 import { uid } from "uid";
-import { db } from "../../../firebase/config";
+import { db, auth } from "../../../firebase/config";
 
 export const AddTransaction = () => {
   const [text, setText] = useState("");
@@ -13,14 +13,14 @@ export const AddTransaction = () => {
 
   //write
   const writeToDatabase = () => {
-    const uuid = uid();
-    set(ref(db, `/${uuid}`), {
+    const city = new URLSearchParams(window.location.search).get("city");
+    const id = uid();
+    set(ref(db, `/userData/${auth.currentUser.uid}/${city}/budget/${id}`), {
       text,
       amount,
-      uuid,
+      id,
     });
     console.log(text, amount);
-    console.log(db)
   };
 
   const onSubmit = (e) => {
@@ -42,7 +42,7 @@ export const AddTransaction = () => {
       </Typography>
       <form onSubmit={onSubmit}>
         <div className="form-control">
-          <label htmlFor="text">Text</label>
+          <h6 htmlFor="text">Item</h6>
           <input
             required
             type="text"
@@ -51,10 +51,11 @@ export const AddTransaction = () => {
             placeholder="Enter text..."
           />
         </div>
+        <br />
         <div className="form-control">
-          <label htmlFor="amount">
+          <h6 htmlFor="amount">
             Amount <br />
-          </label>
+          </h6>
           <input
             required
             type="number"

@@ -21,21 +21,23 @@ export default function Reservation() {
 
     console.log(auth.currentUser.uid);
 
-    const { hotel} = e.target.elements;
+    const { hotel } = e.target.elements;
     saveReservation(hotel.value);
     console.log(db);
 
     e.target.reset();
   };
 
-  function saveReservation(hotel, uid) {
+  function saveReservation(hotel) {
+    const city = new URLSearchParams(window.location.search).get("city");
+    console.log(city);
     const reservationDb = ref(
       db,
-      `/userData/${auth.currentUser.uid}/${uid}/reservation`
+      `/userData/${auth.currentUser.uid}/${city}/reservation`
     );
     console.log(reservationDb);
     set(reservationDb, {
-      hotel: hotel
+      hotel: hotel,
     });
   }
 
@@ -59,15 +61,33 @@ export default function Reservation() {
                   <form
                     initialValues={{
                       hotel: "",
+                      description: "",
                     }}
                     onSubmit={handleSubmit}
                   >
                     <TextField
                       variant="outlined"
                       required
+                      multiline
                       name="hotel"
                       size="small"
+                      placeholder="Name"
                     />
+                    <br />
+                    <Typography
+                      variant="body2"
+                      gutterBottom={true}
+                    ></Typography>{" "}
+                    <TextField
+                      variant="outlined"
+                      rows={4}
+                      multiline
+                      name="description"
+                      size="small"
+                      margin="normal"
+                      placeholder="Description"
+                    />
+                    <br />
                     <Button
                       type="submit"
                       className={classes.root}
@@ -77,6 +97,14 @@ export default function Reservation() {
                       Add
                     </Button>
                   </form>
+                </Box>
+              </div>
+              <div className={classes.contactWrapper}>
+                <Box textAlign="center" py={4}>
+                  <Typography variant="h6" gutterBottom={true}>
+                    `${}`
+                  </Typography>{" "}
+                  <br />
                 </Box>
               </div>
             </Grid>

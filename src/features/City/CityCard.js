@@ -32,8 +32,7 @@ const CityCard = ({ city }) => {
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
-  };
-
+  }
   const deleteCity = (uid) => {
     console.log(city.id);
     remove(ref(db, `/userData/${auth.currentUser.uid}/${uid}`));
@@ -42,7 +41,7 @@ const CityCard = ({ city }) => {
   return (
     <Card sx={{ maxWidth: 400 }}>
       <Link
-        to={`/Itinerary/${city.id}`}
+        to={`/Itinerary/?city=${city.id}`}
         style={{ color: "black", textDecoration: "none" }}
         borderRadius="50"
       >

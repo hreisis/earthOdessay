@@ -12,13 +12,13 @@ const CityList = () => {
     onValue(ref(db, `/userData/${auth.currentUser.uid}`), (snapshot) => {
       setCities([]);
       const data = snapshot.val();
-      //console.log(data);
+console.log(data);
       if (data !== null) {
         Object.values(data).map((city) => {
           setCities((oldArray) => [...oldArray, city]);
         });
       }
-      //console.log(cities);
+ console.log(cities);
     });
   }, []);
 
