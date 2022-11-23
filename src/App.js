@@ -29,7 +29,7 @@ const App = () => {
           <Route path="Signin" element={<SigninPage />} />
           <Route path="Signup" element={<SignupPage />} />
           <Route element={<PrivateRoute />}>
-            <Route path="Account" element={<AccountPage />} forceRefresh={true}/>
+            <Route path="Account" element={<AccountPage />}/>
           </Route>
           <Route element={<PrivateRoute />}>
             <Route path="Itinerary/*" element={<ItineraryPage />} />

@@ -125,7 +125,7 @@ export default function AccountMenu() {
         >
           <MenuItem>
             <Avatar sx={{ width: 32, height: 32, ml: 2 }}>
-              {localStorage.getItem("name")[0]}
+              log
             </Avatar>
             <NavLink
               className="nav-link"
