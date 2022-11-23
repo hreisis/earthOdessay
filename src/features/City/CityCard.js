@@ -13,6 +13,7 @@ import Controls from "../../components/Controls/Controls";
 import CloseIcon from "@material-ui/icons/Close";
 import { ref, remove } from "firebase/database";
 import { db, auth } from "../../firebase/config";
+import Hotel from "../../components/Reservation/Hotel";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -67,7 +68,12 @@ const CityCard = ({ city }) => {
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>...</CardContent>
+        <CardContent>
+          <ul className="list">
+            {city.id.hotel}
+            <li></li>
+          </ul>
+        </CardContent>
       </Collapse>
     </Card>
   );

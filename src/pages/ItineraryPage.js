@@ -9,7 +9,7 @@ import Tabs from "@mui/material/Tabs";
 import Expense from "../components/Itinerary/Expense/Expense";
 import SimpleMap from "../features/Map/SimpleMap";
 import ImageGallery from "../components/Itinerary/ImageGallery";
-import Reservation from '../components/Itinerary/Reservation';
+import Reservation from "../components/Itinerary/Reservation";
 import bg from "../assets/map.png";
 
 function TabPanel(props) {
@@ -53,7 +53,7 @@ const ItineraryPage = () => {
   };
 
   return (
-<>
+    <>
       <Header />
 
       <Grid container spacing={2}>
@@ -75,8 +75,9 @@ const ItineraryPage = () => {
         <Grid
           sx={{
             //backgroundImage: `url(${bg})`,
-            height: "80vh",
-            backgroundPosition: "center",              background: 'rgba(236, 233, 217, 0.8)', 
+            height: "100vh",
+            backgroundPosition: "center",
+            background: "rgba(236, 233, 217, 0.8)",
           }}
         >
           <Box
@@ -107,7 +108,7 @@ const ItineraryPage = () => {
           </Box>
         </Grid>
       </Grid>
-      </>
+    </>
   );
 };
 

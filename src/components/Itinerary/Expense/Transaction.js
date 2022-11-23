@@ -1,23 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { db, auth } from "../../../firebase/config";
 import { ref, onValue, remove } from "firebase/database";
-import { GlobalContext } from "./GlobalState";
-
-//Money formatter function
-// function moneyFormatter(num) {
-//   let p = num.toFixed(1).split(".");
-//   return (
-//     "$ " +
-//     p[0]
-//       .split("")
-//       .reverse()
-//       .reduce(function (acc, num, i, orig) {
-//         return num === "+" ? acc : num + (i && !(i % 3) ? "," : "") + acc;
-//       }, "") +
-//     "." +
-//     p[1]
-//   );
-// }
 
 //read
 export const Transaction = ({ transaction }) => {
