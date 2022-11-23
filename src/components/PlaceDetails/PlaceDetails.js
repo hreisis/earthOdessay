@@ -44,12 +44,12 @@ const PlaceDetails = ({ place, selected, refProp }) => {
           <Chip key={name} size="small" label={name} className={classes.chip} />
         ))}
         {place.address && (
-          <Typography gutterBottom variant="body2" color="secondary" className={classes.subtitle}>
+          <Typography gutterBottom variant="body2"  className={classes.subtitle}>
             <LocationOnIcon />{place.address}
           </Typography>
         )}
         {place.phone && (
-          <Typography variant="body2" color="secondary" className={classes.spacing}>
+          <Typography variant="body2" className={classes.spacing}>
             <PhoneIcon /> {place.phone}
           </Typography>
         )}

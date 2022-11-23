@@ -83,7 +83,6 @@ const ItineraryPage = () => {
           <Box
             sx={{
               flexGrow: 12,
-
               height: "100%",
             }}
           >

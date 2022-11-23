@@ -81,7 +81,7 @@ export default function AccountMenu() {
                 aria-expanded={open ? "true" : undefined}
               >
                 <Avatar sx={{ width: 32, height: 32 }}>
-                  {localStorage.getItem("name")[0]}
+                  Log
                 </Avatar>
               </IconButton>
             </Tooltip>

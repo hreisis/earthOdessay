@@ -22,14 +22,14 @@ const App = () => {
       //   }}
     >
       <AuthProvider>
-        <Routes>
+        <Routes basename="/">
           <Route path="/" element={<HomePage />} />
           <Route path="Explore" element={<InfoPage />} />
           <Route path="About" element={<AboutPage />} />
           <Route path="Signin" element={<SigninPage />} />
           <Route path="Signup" element={<SignupPage />} />
           <Route element={<PrivateRoute />}>
-            <Route path="Account" element={<AccountPage />} />
+            <Route path="Account" element={<AccountPage />} forceRefresh={true}/>
           </Route>
           <Route element={<PrivateRoute />}>
             <Route path="Itinerary/*" element={<ItineraryPage />} />

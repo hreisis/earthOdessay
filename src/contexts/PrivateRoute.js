@@ -9,6 +9,7 @@ const PrivateRoute = () => {
   useEffect(() => {
     if (!currentUser) {
       navigate("/Signin", { replace: true });
+      navigate(0);
     }
   }, []);
 
