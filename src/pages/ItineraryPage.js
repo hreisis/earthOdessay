@@ -94,11 +94,23 @@ const ItineraryPage = () => {
               height: "100%",
             }}
           >
-            <Tabs value={value} onChange={handleChange} sx={{ mt: 1 }}>
-              <Tab label="Reservation" {...a11yProps(0)} />
-              <Tab label="Explore" {...a11yProps(1)} />
-              <Tab label="Budget" {...a11yProps(2)} />
-              <Tab label="Album" {...a11yProps(3)} />
+            <Tabs
+              textColor="#fff"
+              value={value}
+              onChange={handleChange}
+              sx={{ mt: 1 }}
+              variant="fullWidth"
+              TabIndicatorProps={{
+                style: {
+                  backgroundColor: "#C46C13",
+                  height: 5,
+                },
+              }}
+            >
+              <Tab label={(<Typography variant="caption">Reservation</Typography>)} {...a11yProps(0)} />
+              <Tab label={(<Typography variant="caption">Explore</Typography>)}  {...a11yProps(1)} />
+              <Tab label={(<Typography variant="caption">Expense</Typography>)}  {...a11yProps(2)} />
+              <Tab label={(<Typography variant="caption">Album</Typography>)} {...a11yProps(3)} />
             </Tabs>
             <TabPanel value={value} index={0}>
               <Reservation />

@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Transaction } from "./Transaction";
 import Typography from "@mui/material/Typography";
-import { Grid } from "@mui/material";
+import Divider from "@mui/material/Divider";
 import { db, auth } from "../../../firebase/config";
 import { ref, onValue } from "firebase/database";
 
 export const TransactionList = () => {
-  // const { transactions } = useContext(GlobalContext);
-
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
@@ -27,15 +25,16 @@ export const TransactionList = () => {
 
 
   return (
-    <Grid spacing={4} marginLeft={4}>
+    <>
       <Typography variant="h5" gutterBottom>
         History
       </Typography>
+      <Divider />
       <ul className="list">
         {transactions.map((transaction) => (
           <Transaction key={transaction.id} transaction={transaction} />
         ))}
       </ul>
-    </Grid>
+    </>
   );
 };

@@ -9,8 +9,8 @@ body{
   background-color: #F5F4ED;
 }
 .container {
-    margin: 30px auto;
-    width: 350px;
+    margin-top: 30px;
+    width: 30px;
   }
   
 h1 {
@@ -151,7 +151,7 @@ input[type='number'] {
 
 .progress-bar{
   height: 5px;
-  background: var(--secondary);
+  background: #fbd64f;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -166,12 +166,12 @@ input[type='number'] {
   display: block;
   width: 40vw;
   height: 43px;
-  border: 1px solid var(--secondary);
-  background-color: var(--secondary);
+  border: 1px solid #fbd64f;
+  background-color: #fbd64f;
   border-radius: 5px;
   margin: 10px auto;
   line-height: 30px;
-  color: var(--primary);
+  color: #fff;
   font-weight: bold;
   font-size: 11px;
 }

@@ -27,7 +27,7 @@ export const Balance = () => {
 
 
   return (
-    <Grid spacing={4} mr={4}>
+    <>
       <Grid item xs={6}>
         <Typography variant="h5" gutterBottom>
           Your Balance
@@ -38,6 +38,6 @@ export const Balance = () => {
           ${total}
         </Typography>
       </Grid>
-    </Grid>
+      </>
   );
 };

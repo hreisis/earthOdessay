@@ -1,15 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
-import { GlobalContext } from "./GlobalState";
+import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import { ref, set } from "firebase/database";
 import { uid } from "uid";
 import { db, auth } from "../../../firebase/config";
+import { Grid } from "@mui/material";
 
 export const AddTransaction = () => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
-
-  const { addTransaction } = useContext(GlobalContext);
 
   //write
   const writeToDatabase = () => {
@@ -25,18 +23,10 @@ export const AddTransaction = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-    const newTransaction = {
-      id: Math.floor(Math.random() * 100000000),
-      text,
-      amount: +amount,
-    };
-
-    addTransaction(newTransaction);
   };
 
   return (
-    <>
+    <Grid item xs={6}>
       <Typography variant="h5" gutterBottom>
         Add new expense{" "}
       </Typography>
@@ -68,6 +58,6 @@ export const AddTransaction = () => {
           Add transaction
         </button>
       </form>
-    </>
+    </Grid>
   );
 };
