@@ -10,7 +10,27 @@ import Expense from "../components/Itinerary/Expense/Expense";
 import SimpleMap from "../features/Map/SimpleMap";
 import ImageGallery from "../components/Itinerary/ImageGallery";
 import Reservation from "../components/Itinerary/Reservation";
-import bg from "../assets/map.png";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+let theme = createTheme();
+theme.typography.h2 = {
+  fontSize: "2rem",
+  "@media (min-width:600px)": {
+    fontSize: "2rem",
+  },
+  [theme.breakpoints.up("md")]: {
+    fontSize: "3rem",
+  },
+};
+theme.typography.overline = {
+  fontSize: "0.6rem",
+  "@media (min-width:600px)": {
+    fontSize: "0.6rem",
+  },
+  [theme.breakpoints.up("md")]: {
+    fontSize: "1rem",
+  },
+};
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,29 +73,17 @@ const ItineraryPage = () => {
   };
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Header />
-
-      <Grid container spacing={2}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-end",
-            textAlign: "left",
-            paddingBottom: 2,
-          }}
-        >
-          <Typography variant="h2">Itinerary Details</Typography>
-
+      <Grid container spacing={2} xs={8}>
+        <Typography variant="h2">Itinerary Details</Typography>
+        <Grid xs={4}>
           <Typography variant="overline" gutterBottom>
-            Track your trvel details here
+            {">>"}Track your trvel details here
           </Typography>
-        </Box>{" "}
+        </Grid>{" "}
         <Grid
           sx={{
-            //backgroundImage: `url(${bg})`,
-            height: "100vh",
             backgroundPosition: "center",
             background: "rgba(236, 233, 217, 0.8)",
           }}
@@ -107,7 +115,7 @@ const ItineraryPage = () => {
           </Box>
         </Grid>
       </Grid>
-    </>
+    </ThemeProvider>
   );
 };
 

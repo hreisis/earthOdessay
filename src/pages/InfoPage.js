@@ -1,25 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { CssBaseline, Grid } from "@material-ui/core";
-import List from "../components/List/List";
-import Map from "../features/Map/Map";
+import { Grid } from "@material-ui/core";
 import { getPlacesData } from "../api/index";
 import Header from "../components/Header/Header";
-import { AppBar, Toolbar, Typography, InputBase, Box } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
-import { Autocomplete } from "@react-google-maps/api";
-import Button from "@material-ui/core/Button";
-import NearMeIcon from "@mui/icons-material/NearMe";
-import IconButton from "@mui/material/IconButton";
-import useStyles from "../components/Header/styles";
-import Tab from "../components/Tab";
 import SimpleMap from "../features/Map/SimpleMap";
 
 const InfoPage = () => {
-  const classes = useStyles();
   const [places, setPlaces] = useState([]);
   const [filteredPlaces, setFilteredPlaces] = useState([]);
-
-  const [childClicked, setChildClicked] = useState(null);
   const [coordinates, setCoordinates] = useState({});
   const [bounds, setBounds] = useState({});
 

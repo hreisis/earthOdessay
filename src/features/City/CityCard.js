@@ -13,7 +13,6 @@ import Controls from "../../components/Controls/Controls";
 import CloseIcon from "@material-ui/icons/Close";
 import { ref, remove } from "firebase/database";
 import { db, auth } from "../../firebase/config";
-import Hotel from "../../components/Reservation/Hotel";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -27,7 +26,7 @@ const ExpandMore = styled((props) => {
 }));
 
 const CityCard = ({ city }) => {
-  const { id, image, name, description } = city;
+  const { image, name, description } = city;
 
   const [expanded, setExpanded] = React.useState(false);
 
@@ -49,7 +48,7 @@ const CityCard = ({ city }) => {
         <CardHeader title={name} subheader={description} />{" "}
       </Link>
 
-      <CardMedia component="img" height="600" image={image} alt={name} />
+      <CardMedia component="img" height="500" image={image} alt={name} />
       <CardActions disableSpacing>
         {" "}
         <Controls.ActionButton

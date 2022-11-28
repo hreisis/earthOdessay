@@ -3,10 +3,25 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Container";
 import Header from "../components/Header/Header";
 import Contact from "../features/user/Contact";
+import {
+  createTheme,
+  ThemeProvider,
+} from "@mui/material/styles";
+
+let theme = createTheme();
+theme.typography.h2 = {
+  fontSize: "2rem",
+  "@media (min-width:600px)": {
+    fontSize: "2rem",
+  },
+  [theme.breakpoints.up("md")]: {
+    fontSize: "3rem",
+  },
+};
 
 const AboutPage = () => {
   return (
-    <>
+    <ThemeProvider theme={theme}>
     <Header />
       <Grid container spacing={2}>
         <Typography variant="h2" gutterBottom>
@@ -16,26 +31,8 @@ const AboutPage = () => {
           for Your Travel on Earth
         </Typography>
       </Grid>
-      {/* <Grid container spacing={2}>
-        <Grid item xs={6}></Grid>
-        <Grid justifyContent="flex-end" xs={6}>
-          <Typography variant="h5" gutterBottom textAlign="right">
-            Earth Odessay <br />
-            is designed for every voyager.
-          </Typography> */}
-      {/* <Typography mt="20" variant="overline" gutterBottom textAlign="right">
-            <ul>
-              <li>Here you could:</li>
-              <li>{">>"}Plan your trip</li>
-              <li>{">>"}Explore the new places</li>
-              <li>{">>"}Manage your itinery</li>
-              <li>and more</li>
-            </ul>
-          </Typography>
-        </Grid>
-      </Grid> */}
       <Contact />
-    </>
+    </ThemeProvider>
   );
 };
 

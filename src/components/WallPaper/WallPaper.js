@@ -1,5 +1,5 @@
-import React from "react";
-import { Typography } from "@material-ui/core";
+import React from "react"; 
+import Box from '@mui/material/Box';
 
 const WallPaper = () => {
 
@@ -51,16 +51,14 @@ const WallPaper = () => {
   console.log(getLink());
 
   return (
-    <div>
-        <div style={{ 
+
+        <>
+           <Box sx={{ 
             backgroundImage: `url(${getLink()})`,
             backgroundSize: 'cover',
             height: '100vh'}}
-            >
-
-        </div>
-
-    </div>
+            />
+        </>
 
   );
 };
