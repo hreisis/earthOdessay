@@ -1,4 +1,3 @@
-import { validateContactForm } from "../../utils/validateContactForm";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -30,14 +29,13 @@ const ContactForm = () => {
 
   return (
     <form
-      initialValues={{
+      initialvalues={{
         firstName: "",
         lastName: "",
         email: "",
         agree: false,
       }}
       onSubmit={handleSubmit}
-      validate={validateContactForm}
     >
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
@@ -80,7 +78,7 @@ const ContactForm = () => {
             variant="outlined"
             required
             multiline
-            rows={8}
+            minRows={8}
             fullWidth
             autoComplete="message"
             name="message"
@@ -98,7 +96,7 @@ const ContactForm = () => {
         </Grid>
       </Grid>
       <Box mt={2}>
-        <Button type="submit" fullWidth variant="contained" color="dark">
+        <Button type="submit" fullWidth variant="contained" color="inherit">
           Submit
         </Button>
       </Box>

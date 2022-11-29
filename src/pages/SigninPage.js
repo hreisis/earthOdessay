@@ -32,7 +32,7 @@ const SigninPage = () => {
   return (
     <ThemeProvider theme={theme}>
     <Header />
-      <Grid container spacing={2}>
+      <Grid container="true" spacing={2}>
         <Typography variant="h2" gutterBottom>
           Please sign in first
         </Typography>

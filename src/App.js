@@ -14,13 +14,7 @@ import PrivateRoute from "./contexts/PrivateRoute";
 const App = () => {
   return (
     <div
-      className="App"
-      //   style={{
-      //     backgroundImage: `url('https://via.placeholder.com/500)`,
-      //     backgroundSize: "cover",
-      //     height: "100vh",
-      //   }}
-    >
+      className="App">
       <AuthProvider>
         <Routes basename="/">
           <Route path="/" element={<HomePage />} />

@@ -41,14 +41,14 @@ const SignUp = () => {
   return (
     <section>
       <Container>
-        <Grid container>
+        <Grid container justifyContent="center" spacing={10}>
           <Grid item xs={12} md={7}>
             <Box>
               <WallPaper />
             </Box>
           </Grid>
-          <Grid item xs={12} md={5} justifyContent="center" spacing={10}>
-            <Box pt={8} pb={10} mr={5} ml={10}>
+          <Grid item xs={12} md={5} >
+            <Box pt={8} pb={10} mr={5} ml={5}>
               <Box mb={3} textAlign="center">
                 <Link href="/" variant="h4" color="inherit" underline="none">
                   <img src={logo} alt="" width="100" />

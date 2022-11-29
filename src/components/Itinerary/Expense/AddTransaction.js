@@ -4,6 +4,8 @@ import { ref, set } from "firebase/database";
 import { uid } from "uid";
 import { db, auth } from "../../../firebase/config";
 import { Grid } from "@mui/material";
+import Box from "@mui/material/Box";
+import TextField from '@mui/material/TextField';
 
 export const AddTransaction = () => {
   const [text, setText] = useState("");
@@ -30,10 +32,10 @@ export const AddTransaction = () => {
       <Typography variant="h5" gutterBottom>
         Add new expense{" "}
       </Typography>
-      <form onSubmit={onSubmit}>
+      <Box component="form" onSubmit={onSubmit}>
         <div className="form-control">
-          <h6 htmlFor="text">Item</h6>
-          <input
+          <Typography variant="body1" gutterBottom={true} htmlFor="text">Item</Typography>
+          <TextField
             required
             type="text"
             value={text}
@@ -43,10 +45,10 @@ export const AddTransaction = () => {
         </div>
         <br />
         <div className="form-control">
-          <h6 htmlFor="amount">
+          <Typography variant="body1" gutterBottom={true} htmlFor="text">
             Amount <br />
-          </h6>
-          <input
+          </Typography>
+          <TextField
             required
             type="number"
             value={amount}
@@ -57,7 +59,7 @@ export const AddTransaction = () => {
         <button className="btn" onClick={writeToDatabase}>
           Add transaction
         </button>
-      </form>
+      </Box>
     </Grid>
   );
 };

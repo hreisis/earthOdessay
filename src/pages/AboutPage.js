@@ -23,7 +23,7 @@ const AboutPage = () => {
   return (
     <ThemeProvider theme={theme}>
     <Header />
-      <Grid container spacing={2}>
+      <Grid container="true" spacing={2}>
         <Typography variant="h2" gutterBottom>
           The Go-To site
         </Typography>

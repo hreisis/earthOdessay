@@ -12,6 +12,7 @@ import logo from "../../assets/logo.png";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
+import Container from '@mui/material/Container';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -63,7 +64,8 @@ export default function AccountMenu() {
   };
 
   return (
-    <Grid container spacing={2}>
+    <Container maxWidth="lg" >
+
       <Toolbar className={classes.toolbar}>
         <Link href="/" variant="h4" color="inherit" underline="none" className={classes.logo}>
           <img src={logo} alt="" width="70" />
@@ -122,6 +124,7 @@ export default function AccountMenu() {
           </IconButton>
         </Tooltip>
       </Toolbar>
+
 
       <Menu
         anchorEl={anchorEl}
@@ -206,6 +209,6 @@ export default function AccountMenu() {
           </Box>
         </div>
       </Drawer> */}
-    </Grid>
+</Container>
   );
 }

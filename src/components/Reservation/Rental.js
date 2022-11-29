@@ -78,8 +78,9 @@ export default function Rental({ rental }) {
               Rental
             </Typography>{" "}
             <br />
-            <form
-              initialValues={{
+            <Box
+             component="form"
+              initialvalues={{
                 rental: "",
                 description: "",
               }}
@@ -97,7 +98,7 @@ export default function Rental({ rental }) {
               <Typography variant="body2" gutterBottom={true}></Typography>{" "}
               <TextField
                 variant="outlined"
-                rows={4}
+                minRows={4}
                 multiline
                 name="rentalDes"
                 size="small"
@@ -114,11 +115,12 @@ export default function Rental({ rental }) {
               >
                 Add
               </Button>
-            </form>
+            </Box>
           </Box>
         </div>
         <div className={classes.contactWrapper}>
           <Box
+           component="form"
             textAlign="center"
             sx={{
               display: "flex",
@@ -126,12 +128,11 @@ export default function Rental({ rental }) {
               paddingBottom: 10,
             }}
           >
-            <ul className="list">
+            <div className="list">
               {rentals.map((rental) => (
-                <>
-                  <li>
+                  <li key={rental.id}>
                     <Card
-                      key={rental.id}
+                      
                       variant="outlined"
                       sx={{
                         width: "220px",
@@ -153,9 +154,8 @@ export default function Rental({ rental }) {
                       x
                     </button>
                   </li>
-                </>
               ))}
-            </ul>
+            </div>
             <br />
           </Box>
         </div>

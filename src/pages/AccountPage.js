@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Grid from "@mui/material/Container";
-import { Typography } from "@mui/material";
+import { Divider, Typography } from "@mui/material";
 import CityList from "../features/City/CityList";
 import AddCityForm from "../components/form/AddCityForm";
 import Popup from "../components/Controls/Popup";
@@ -40,9 +40,10 @@ const AccountPage = () => {
       <Grid xs={12} md={8}>
         <Typography variant="h2">
           {localStorage.getItem("name")}'s Itinerary
+          <hr />
         </Typography>
       </Grid>
-      <Grid p={10} spacing={5}>
+      <Grid margin={10} spacing={5}>
         <a href="/">
           <Button
             className={classes.root}
@@ -65,7 +66,7 @@ const AccountPage = () => {
           Add a destination
         </Button>
       </Grid>
-      <Grid item p={10} spacing={5}>
+      <Grid item="true" p={10} spacing={5}>
         <CityList />
       </Grid>
 

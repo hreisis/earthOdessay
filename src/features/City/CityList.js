@@ -28,7 +28,7 @@ console.log(data);
     <Grid container>
       {cities.map((city) => {
         return (
-          <Grid item pr={2} pt={5}>
+          <Grid item pr={2} pt={5} key={city.id}>
             <CityCard city={city} />
           </Grid>
         );

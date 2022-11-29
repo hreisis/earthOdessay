@@ -53,7 +53,7 @@ const InfoPage = () => {
   return (
     <>
       <Header setCoordinates={setCoordinates} />
-      <Grid container>
+      <Grid container spacing={2}>
         <SimpleMap />
       </Grid>
     </>

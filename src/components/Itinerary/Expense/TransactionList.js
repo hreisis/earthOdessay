@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Transaction } from "./Transaction";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
 import { db, auth } from "../../../firebase/config";
 import { ref, onValue } from "firebase/database";
 
@@ -29,12 +28,11 @@ export const TransactionList = () => {
       <Typography variant="h5" gutterBottom>
         History
       </Typography>
-      <Divider />
-      <ul className="list">
+      <div className="list">
         {transactions.map((transaction) => (
           <Transaction key={transaction.id} transaction={transaction} />
         ))}
-      </ul>
+      </div>
     </>
   );
 };

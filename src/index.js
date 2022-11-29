@@ -7,12 +7,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-social/bootstrap-social.css';
 import App from './App';
 
-
-
 //ReactDOM.render(<App />, document.getElementById('root'))
 
-const container = document.getElementById('root');
-const root = createRoot(container);
+const content = document.getElementById('root');
+const root = createRoot(content);
 root.render(
     <BrowserRouter>
         <App />

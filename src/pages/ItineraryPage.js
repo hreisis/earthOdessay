@@ -28,7 +28,7 @@ theme.typography.overline = {
     fontSize: "0.6rem",
   },
   [theme.breakpoints.up("md")]: {
-    fontSize: "1rem",
+    fontSize: "0.8rem",
   },
 };
 
@@ -75,7 +75,7 @@ const ItineraryPage = () => {
   return (
     <ThemeProvider theme={theme}>
       <Header />
-      <Grid container spacing={2} xs={8}>
+      <Grid container="true" spacing={2} xs={8}>
         <Typography variant="h2">Itinerary Details</Typography>
         <Grid xs={4}>
           <Typography variant="overline" gutterBottom>
@@ -95,7 +95,6 @@ const ItineraryPage = () => {
             }}
           >
             <Tabs
-              textColor="#fff"
               value={value}
               onChange={handleChange}
               sx={{ mt: 1 }}

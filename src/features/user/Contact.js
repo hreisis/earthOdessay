@@ -11,12 +11,7 @@ import ContactForm from "../../components/form/ContactForm";
 const useStyles = makeStyles((theme) => ({
   halfLg: {
     [theme.breakpoints.up("lg")]: {
-      maxWidth: theme.breakpoints.values["lg"] / 2,
-    },
-  },
-  firstBox: {
-    [theme.breakpoints.up("lg")]: {
-      marginLeft: "auto",
+      maxWidth: theme.breakpoints.values["lg"] / 2,      marginLeft: "auto",
       paddingRight: theme.spacing(6),
     },
   },
@@ -55,14 +50,14 @@ export default function Contact(props) {
               <WallPaper />
             </Box>
           </Grid>
-          <Grid item xs={12} md={5} justifyContent="flex-end">
+          <Grid item xs={12} md={5}>
             <Box
               pb={8}
               display="flex"
               justifyContent="flex-end"
               alignItems="flex-end"
               textAlign="right"
-              className={[classes.halfLg, classes.firstBox]}
+              className={classes.halfLg}
             >
               <Container>
                 <Box mb={4} p={2} pb={6}>
@@ -70,7 +65,6 @@ export default function Contact(props) {
                   <Typography
                     variant="h5"
                     gutterBottom
-                    textAlign="right"
                     mb="20"
                     fontWeight="bold"
                   >
@@ -83,7 +77,6 @@ export default function Contact(props) {
                     mt="20"
                     variant="overline"
                     gutterBottom
-                    textAlign="right"
                   >
                     Here you could:  
                     <NavLink

@@ -34,7 +34,7 @@ export const Balance = () => {
         </Typography>
       </Grid>
       <Grid item xs={6}>
-        <Typography variant="h3" >
+        <Typography variant="h3" gutterBottom>
           ${total}
         </Typography>
       </Grid>

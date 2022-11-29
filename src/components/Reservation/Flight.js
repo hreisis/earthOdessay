@@ -78,8 +78,9 @@ export default function Flight({ flight }) {
               Flight
             </Typography>{" "}
             <br />
-            <form
-              initialValues={{
+            <Box
+             component="form"
+              initialvalues={{
                 flight: "",
                 description: "",
               }}
@@ -97,7 +98,7 @@ export default function Flight({ flight }) {
               <Typography variant="body2" gutterBottom={true}></Typography>{" "}
               <TextField
                 variant="outlined"
-                rows={4}
+                minRows={4}
                 multiline
                 name="flightDes"
                 size="small"
@@ -114,11 +115,12 @@ export default function Flight({ flight }) {
               >
                 Add
               </Button>
-            </form>
+            </Box>
           </Box>
         </div>
         <div className={classes.contactWrapper}>
           <Box
+           component="form"
             textAlign="center"
             sx={{
               display: "flex",
@@ -126,12 +128,10 @@ export default function Flight({ flight }) {
               paddingBottom: 10,
             }}
           >
-            <ul className="list">
+            <div className="list">
               {flights.map((flight) => (
-                <>
-                  <li>
+                  <li key={flight.id}>
                     <Card
-                      key={flight.id}
                       variant="outlined"
                       sx={{
                         width: "220px",
@@ -153,9 +153,8 @@ export default function Flight({ flight }) {
                       x
                     </button>
                   </li>
-                </>
               ))}
-            </ul>
+            </div>
             <br />
           </Box>
         </div>

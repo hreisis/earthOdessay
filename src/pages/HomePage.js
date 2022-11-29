@@ -13,7 +13,7 @@ theme.typography.h1 = {
     fontSize: "6rem",
   },
   [theme.breakpoints.up("md")]: {
-    fontSize: "5rem",
+    fontSize: "6rem",
   },
 };
 
@@ -23,7 +23,7 @@ theme.typography.overline = {
     fontSize: "0.6rem",
   },
   [theme.breakpoints.up("md")]: {
-    fontSize: "1rem",
+    fontSize: "0.9rem",
   },
 };
 
@@ -31,9 +31,9 @@ const HomePage = () => {
   return (
     <ThemeProvider theme={theme}>
       <Header />
-      <Grid container spacing={2} xs={8}>
+      <Grid container="true" spacing={2} xs={6}>
         <Typography variant="h1">Earth Odessay</Typography>
-        <Grid container spacing={2} xs={4}>
+        <Grid container="true" spacing={2} xs={4}>
           <Link
             to="/"
             onClick={() => window.location.reload()}

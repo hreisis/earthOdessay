@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
@@ -66,7 +65,7 @@ export default function Hotel({ hotel }) {
   return (
     <>
       <Grid item xs={12} md={4}>
-        <div className={classes.contactWrapper}>
+        <Grid className={classes.contactWrapper}>
           <Box textAlign="center" py={4}>
             <Box display="flex" justifyContent="center" mb={3}>
               <Avatar className={classes.iconWrapper}>
@@ -77,8 +76,9 @@ export default function Hotel({ hotel }) {
               Hotel
             </Typography>{" "}
             <br />
-            <form
-              initialValues={{
+            <Box
+             component="form"
+              initialvalues={{
                 hotel: "",
                 description: "",
               }}
@@ -92,11 +92,10 @@ export default function Hotel({ hotel }) {
                 size="small"
                 placeholder="Name"
               />
-              <br />
               <Typography variant="body2" gutterBottom={true}></Typography>{" "}
               <TextField
                 variant="outlined"
-                rows={4}
+                minRows={4}
                 multiline
                 name="hotelDes"
                 size="small"
@@ -113,11 +112,12 @@ export default function Hotel({ hotel }) {
               >
                 Add
               </Button>
-            </form>
+            </Box>
           </Box>
-        </div>
-        <div className={classes.contactWrapper}>
+        </Grid>
+        <Grid className={classes.contactWrapper}>
           <Box
+           component="form"
             textAlign="center"
             sx={{
               display: "flex",
@@ -125,12 +125,10 @@ export default function Hotel({ hotel }) {
               paddingBottom: 10,
             }}
           >
-            <ul className="list">
+            <div className="list" >
               {hotels.map((hotel) => (
-                <>
-                  <li>
+                  <li key={hotel.id} >
                     <Card
-                      key={hotel.id}
                       variant="outlined"
                       sx={{
                         width: "220px",
@@ -152,12 +150,11 @@ export default function Hotel({ hotel }) {
                       x
                     </button>
                   </li>
-                </>
               ))}
-            </ul>
+            </div>
             <br />
           </Box>
-        </div>
+        </Grid>
       </Grid>
     </>
   );

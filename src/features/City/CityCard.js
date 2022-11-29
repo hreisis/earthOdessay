@@ -43,7 +43,6 @@ const CityCard = ({ city }) => {
       <Link
         to={`/Itinerary/?city=${city.id}`}
         style={{ color: "black", textDecoration: "none" }}
-        borderRadius="50"
       >
         <CardHeader title={name} subheader={description} />{" "}
       </Link>

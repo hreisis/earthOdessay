@@ -11,7 +11,9 @@ import Box from "@mui/material/Box";
 const Expense = () => {
   return (
     <>
-      <Balance />
+      <Grid className="container">
+        <Balance />
+      </Grid>
       <Grid>
         <Grid className="container">
           <AddTransaction />

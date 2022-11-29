@@ -1,5 +1,4 @@
-import React, { useCallback, useContext } from "react";
-import Container from "@material-ui/core/Container";
+import React, { useCallback } from "react";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
@@ -11,6 +10,22 @@ import logo from "../../assets/logo.png";
 import { signInWithPassword, signInWithGoogle } from "../../firebase/config";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { Container } from "@mui/system";
+import {
+  createTheme,
+  ThemeProvider,
+} from "@mui/material/styles";
+
+let theme = createTheme();
+theme.typography.h2 = {
+  fontSize: "2rem",
+  "@media (min-width:600px)": {
+    fontSize: "2rem",
+  },
+  [theme.breakpoints.up("md")]: {
+    fontSize: "3rem",
+  },
+};
 
 const SignIn = () => {
   const handleSignIn = useCallback(async (event) => {
@@ -29,9 +44,7 @@ const SignIn = () => {
 
   if (currentUser) {
     navigate("/Account");
-  };
-
-
+  }
 
   return (
     <section>
@@ -42,8 +55,8 @@ const SignIn = () => {
               <WallPaper />
             </Box>
           </Grid>
-          <Grid item xs={12} md={5} justifyContent="center" spacing={10}>
-            <Box pt={8} pb={10} mr={5} ml={10}>
+          <Grid item xs={12} md={5}>
+            <Box pt={8} pb={10} mr={5} ml={8}>
               <Box mb={3} textAlign="center">
                 <Link href="/" variant="h4" color="inherit" underline="none">
                   <img src={logo} alt="" width="100" />
@@ -85,12 +98,12 @@ const SignIn = () => {
                     </Button>
                   </Box>
                   <Box my={2} textAlign="center">
-                    <Button
-                      class="login-with-google-btn"
+                    <button
+                      className="login-with-google-btn"
                       onClick={signInWithGoogle}
                     >
-                      Sign in with Google here
-                    </Button>
+                      Sign in with Google
+                    </button>
                   </Box>
                   <Box textAlign="center">
                     <Link href="/Signup" variant="body2">

@@ -64,12 +64,11 @@ const SimpleMap = () => {
 
   return (
     <>
-      <Grid container spacing={2} justifyContent="Space-between">
-        <Grid item xs={4}>
+      <Grid container spacing={2} justifyContent="space-between">
+        <Grid item xs={12} md={4}>          <br />
           <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
             <div className={classes.search}>
               <SearchIcon />
-
               <InputBase
                 placeholder="Searching a city"
                 classes={{
@@ -79,7 +78,7 @@ const SimpleMap = () => {
               />
             </div>
           </Autocomplete>
-          <br />
+
           <List
             places={filteredPlaces.length ? filteredPlaces : places}
             isLoading={isLoading}
@@ -90,7 +89,7 @@ const SimpleMap = () => {
             setRating={setRating}
           />
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12} md={8}>
           <Map
             setCoordinates={setCoordinates}
             setBounds={setBounds}
