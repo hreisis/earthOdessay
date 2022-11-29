@@ -48,7 +48,7 @@ const WallPaper = () => {
     xobj.send(null);
   };
 
-  console.log(getLink());
+  // console.log(getLink());
 
   return (
 

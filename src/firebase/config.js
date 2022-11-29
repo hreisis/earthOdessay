@@ -4,12 +4,11 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
-  connectAuthEmulator,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { getStorage } from "firebase/storage";
-import {serverTimestamp, getFirestore} from 'firebase/firestore';
+import { serverTimestamp, getFirestore } from "firebase/firestore";
 import { getDatabase, ref, set } from "firebase/database";
 
 const provider = new GoogleAuthProvider();
@@ -46,7 +45,7 @@ export const signInWithGoogle = () => {
 
       localStorage.setItem("name", name);
       localStorage.setItem("email", email);
-      localStorage.setItem("profilePic", profilePic); 
+      localStorage.setItem("profilePic", profilePic);
       localStorage.setItem("uid", uid);
     })
     .catch((error) => {
@@ -57,7 +56,7 @@ export const signInWithGoogle = () => {
 export const signOutFunction = () => {
   signOut(auth)
     .then(() => {
-      console.log('Successfully logged out.')
+      console.log("Successfully logged out.");
     })
     .catch((error) => {
       // An error happened.
@@ -65,30 +64,31 @@ export const signOutFunction = () => {
 };
 
 export const signUpWithPassword = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    const email = user.email;
-    // ...
-    localStorage.setItem("name", email);
-  })
-  .catch((error) => {
-    // ..
-  });
-}
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      const email = user.email;
+      // ...
+      localStorage.setItem("name", email);
+    })
+    .catch((error) => {
+      alert("Please make sure the email address is correct, and the password is greater than 6 numbers.");
+    });
+};
 
 export const signInWithPassword = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    const email = user.email;
-    // ...
-    localStorage.setItem("name", email);
-  })
-  .catch((error) => {
-  });
-}
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      console.log("Credential");
+      const user = userCredential.user;
+      const email = user.email;
+      // ...
+      localStorage.setItem("name", email);
+      console.log("Succeeded");
+    })
+    .catch((error) => {});
+};
 
 // connectAuthEmulator(auth, "http://localhost:9099")

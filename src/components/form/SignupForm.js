@@ -21,19 +21,18 @@ const SignUp = () => {
     event.preventDefault();
     const { name, email, password } = event.target.elements;
     try {
-      await signUpWithPassword(name.value, email.value, password.value);
-      console.log(name.value, email.value);
+      await signUpWithPassword(email.value, password.value);
       saveUser(name.value, email.value);
-      navigate("/Account");
     } catch (error) {
       alert(error);
     }
+    navigate("/Account");
   });
 
   const navigate = useNavigate();
 
-  function saveUser(uid, name, email) {
-    set(ref(db, "user/" + uid), {
+  function saveUser(name, email) {
+    set(ref(db, `user/${name}`), {
       name: name,
       email: email,
     });
@@ -47,7 +46,7 @@ const SignUp = () => {
               <WallPaper />
             </Box>
           </Grid>
-          <Grid item xs={12} md={5} >
+          <Grid item xs={12} md={5}>
             <Box pt={8} pb={10} mr={5} ml={5}>
               <Box mb={3} textAlign="center">
                 <Link href="/" variant="h4" color="inherit" underline="none">

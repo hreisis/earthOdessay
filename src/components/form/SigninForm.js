@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
@@ -11,21 +11,6 @@ import { signInWithPassword, signInWithGoogle } from "../../firebase/config";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Container } from "@mui/system";
-import {
-  createTheme,
-  ThemeProvider,
-} from "@mui/material/styles";
-
-let theme = createTheme();
-theme.typography.h2 = {
-  fontSize: "2rem",
-  "@media (min-width:600px)": {
-    fontSize: "2rem",
-  },
-  [theme.breakpoints.up("md")]: {
-    fontSize: "3rem",
-  },
-};
 
 const SignIn = () => {
   const handleSignIn = useCallback(async (event) => {
@@ -33,18 +18,20 @@ const SignIn = () => {
     const { email, password } = event.target.elements;
     try {
       await signInWithPassword(email.value, password.value);
-      console.log(email.value);
     } catch (error) {
       alert(error);
     }
   });
 
   const { currentUser } = useAuth();
+  console.log(currentUser);
   const navigate = useNavigate();
 
-  if (currentUser) {
-    navigate("/Account");
-  }
+  useEffect(() => {
+    if (currentUser) {
+      navigate("/Account");
+    }
+  }, [navigate, currentUser]);
 
   return (
     <section>
