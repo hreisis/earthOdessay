@@ -11,6 +11,7 @@ import useStyles from "../components/Button/gradientBtn";
 import Menu from "../components/Header/Header";
 import { signOutFunction } from "../firebase/config";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Link from "@material-ui/core/Link";
 
 let theme = createTheme();
 theme.typography.h2 = {
@@ -44,16 +45,17 @@ const AccountPage = () => {
         </Typography>
       </Grid>
       <Grid margin={10} spacing={5}>
-        <a href="/">
+        <Link href="/" underline="none">
           <Button
             className={classes.root}
             variant="contained"
             endIcon={<LogoutIcon />}
             onClick={signOutFunction}
+            
           >
             Sign out
           </Button>
-        </a>{" "}
+        </Link>{" "}
         <Button
           className={classes.root}
           variant="contained"
