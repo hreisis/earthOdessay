@@ -69,7 +69,7 @@ export default function Contact(props) {
                     fontWeight="bold"
                   >
                     {" "}
-                    Earth Odessay <br />
+                    Earth Odyssey <br />
                     is designed for every voyager.
                     <br /> <br />
                   </Typography>

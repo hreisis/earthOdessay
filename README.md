@@ -1,9 +1,9 @@
-# Earth Odessay
+# Earth Odyssey
 
 ### _The Go-To site for Your Travel on Earth_
 
 
-Designed for every voyager, Earth Odessay is a comprehensive website where user can set up their own itinerary
+Designed for every voyager, Earth Odyssey is a comprehensive website where user can set up their own itinerary
 
 - Plan the trip
 - Explore the new places
@@ -21,7 +21,7 @@ Designed for every voyager, Earth Odessay is a comprehensive website where user 
 
 ## About The Project
 
-As an all-in-one initerary, Earth Odessay is an independently designed application for better organizing personal travel information. 
+As an all-in-one initerary, Earth Odyssey is an independently designed application for better organizing personal travel information. 
 
 
 

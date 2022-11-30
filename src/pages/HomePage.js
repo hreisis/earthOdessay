@@ -32,7 +32,7 @@ const HomePage = () => {
     <ThemeProvider theme={theme}>
       <Header />
       <Grid container="true" spacing={2} xs={6}>
-        <Typography variant="h1">Earth Odessay</Typography>
+        <Typography variant="h1">Earth Odyssey</Typography>
         <Grid container="true" spacing={2} xs={4}>
           <Link
             to="/"

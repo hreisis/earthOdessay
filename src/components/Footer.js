@@ -37,7 +37,7 @@ export default function Footer(props) {
       <Container maxWidth="lg" >
         <Box py={6} display="flex" flexWrap="wrap" alignItems="center" margin="20">
           <Typography component="p" gutterBottom={false} className={classes.copy}>
-          © 2022 Earth Odessay. All rights reserved
+          © 2022 Earth Odyssey. All rights reserved
           </Typography>
           <Box ml="auto" className={classes.iconsBoxRoot}>
             <IconButton aria-label="Twitter">
