@@ -12,25 +12,29 @@ import logo from "../../assets/logo.png";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
-import Container from '@mui/material/Container';
+import Container from "@mui/material/Container";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     minHeight: 70,
+    margin: 0,
+    justifyContent: "space-between"
   },
   logo: {
     lineHeight: 1,
-    marginRight: "auto",
+    marginLeft: -20,
+    flexGrow: 1,
     [theme.breakpoints.down("sm")]: {
-      display: "none",
+      width: 50,
     },
   },
   link: {
     fontSize: "1rem",
-    fontWeight: 'bold',
-    marginRight: 'auto',
+    fontWeight: "bold",
+    marginRight: -500,
     [theme.breakpoints.down("sm")]: {
       fontSize: "0.7rem",
+      margin: "auto",
     },
   },
   menuButton: {
@@ -64,12 +68,13 @@ export default function AccountMenu() {
   };
 
   return (
-    <Container maxWidth="lg" >
-
+    <Container>
       <Toolbar className={classes.toolbar}>
-        <Link href="/" variant="h4" color="inherit" underline="none" className={classes.logo}>
-          <img src={logo} alt="" width="70" />
-        </Link>
+        <div>
+          <Link href="/" variant="h4" color="inherit" underline="none">
+            <img src={logo} alt="" width="70" className={classes.logo} />
+          </Link>
+        </div>
         <Link
           href="/"
           color="textPrimary"
@@ -102,15 +107,6 @@ export default function AccountMenu() {
         >
           {">>"}Itinerary
         </Link>
-        {/* <IconButton
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          className={classes.menuButton}
-          onClick={toggleDrawer(true)}
-        >
-          <MenuIcon />
-        </IconButton> */}
         <Tooltip title="Account settings" className={classes.link}>
           <IconButton
             onClick={handleClick}
@@ -120,11 +116,10 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>Log</Avatar>
+            <Avatar sx={{ width: 32, height: 32, margin: -10 }}>Log</Avatar>
           </IconButton>
         </Tooltip>
       </Toolbar>
-
 
       <Menu
         anchorEl={anchorEl}
@@ -209,6 +204,6 @@ export default function AccountMenu() {
           </Box>
         </div>
       </Drawer> */}
-</Container>
+    </Container>
   );
 }

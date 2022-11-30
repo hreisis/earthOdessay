@@ -16,7 +16,7 @@ const App = () => {
     <div
       className="App">
       <AuthProvider>
-        <Routes basename="/">
+        <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="Explore" element={<InfoPage />} />
           <Route path="About" element={<AboutPage />} />
