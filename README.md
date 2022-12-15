@@ -10,6 +10,7 @@ Designed for every voyager, Earth Odyssey is a comprehensive website where user 
 - Save the itinerary
 - Upload picture to travel album
 - ✨Start the journey ✨
+- earth-odyssey.com
 
 ## Built With
 
@@ -18,6 +19,9 @@ Designed for every voyager, Earth Odyssey is a comprehensive website where user 
 - MUI/ Material-UI
 - GoogleMap API/ TravelAdvisor API
 - Firebase Authentication/ Storage/ Firestore Database
+
+## Interface Quick Glance
+
 
 ## About The Project
 
