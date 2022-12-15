@@ -20,14 +20,12 @@ Designed for every voyager, Earth Odyssey is a comprehensive website where user 
 - GoogleMap API/ TravelAdvisor API
 - Firebase Authentication/ Storage/ Firestore Database
 
-## Interface Quick Glance
-
-
 ## About The Project
 
 As an all-in-one initerary, Earth Odyssey is an independently designed application for better organizing personal travel information. 
 
-
+## Interface Quick Glance
+<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/1.png" height="400" />&nbsp;<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/2.png" height="400" />&nbsp;<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/3.png" height="400" />&nbsp;<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/4.png" height="400" />&nbsp;<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/5.png" height="430" />&nbsp;<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/6.png" height="430" />&nbsp;<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/7.png" height="430" />&nbsp;<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/8.png" height="400" />&nbsp;<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/9.png" height="400" />
 
 ## Installation
 
