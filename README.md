@@ -24,6 +24,9 @@ Designed for every voyager, Earth Odyssey is a comprehensive website where user 
 
 As an all-in-one initerary, Earth Odyssey is an independently designed application for better organizing personal travel information. 
 
+## Site Link
+https://earth-odyssey.com/
+
 ## Interface Quick Glance
 <img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/1.png" height="300" />&nbsp;<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/2.png" height="300" />&nbsp;<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/3.png" height="300" />&nbsp;<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/4.png" height="300" />&nbsp;<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/5.png" height="330" />&nbsp;<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/6.png" height="330" />&nbsp;<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/7.png" height="330" />&nbsp;<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/8.png" height="300" />&nbsp;<img src="https://github.com/hreisis/earthOdyssey/blob/main/src/assets/9.png" height="300" />
 
